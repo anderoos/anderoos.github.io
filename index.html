@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andy Nguyen — Data Engineer</title>
+  <title>Andy Cheng — Data Engineer</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,25 +29,36 @@
   <div class="edge-top"></div>
   <div class="edge-bot"></div>
 
-  <div class="hud hud-tl">
+  <!-- BOTTOM BANNER -->
+  <div class="bottom-banner">
+    <span class="bb-item"><span class="bb-label">PRODUCTION DATE</span> 2026.03.27</span>
+<!--    <span class="bb-sep">·</span>-->
+<!--    <span class="bb-item"><span class="bb-label">STACK</span> dbt · Dagster · BigQuery · Python</span>-->
+<!--    <span class="bb-sep">·</span>-->
+<!--    <span class="bb-item"><span class="bb-label">LOC</span> New York City</span>-->
+<!--    <span class="bb-sep">·</span>-->
+<!--    <span class="bb-item bb-teal">OPEN TO WORK</span>-->
+  </div>
+
+  <div class="hud hud-tl anim-fade-in anim-d1">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path d="M0 20 L0 0 L20 0" stroke="#00C4B4" stroke-width="1.5"/>
       <circle cx="0" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
     </svg>
   </div>
-  <div class="hud hud-tr">
+  <div class="hud hud-tr anim-fade-in anim-d1">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path d="M20 20 L20 0 L0 0" stroke="#00C4B4" stroke-width="1.5"/>
       <circle cx="20" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
     </svg>
   </div>
-  <div class="hud hud-bl">
+  <div class="hud hud-bl anim-fade-in anim-d2">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path d="M0 0 L0 20 L20 20" stroke="#00C4B4" stroke-width="1.5"/>
       <circle cx="0" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
     </svg>
   </div>
-  <div class="hud hud-br">
+  <div class="hud hud-br anim-fade-in anim-d2">
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path d="M20 0 L20 20 L0 20" stroke="#00C4B4" stroke-width="1.5"/>
       <circle cx="20" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
@@ -57,15 +68,15 @@
   <div class="page-wipe" id="page-wipe"></div>
 
   <!-- NAV -->
-  <nav id="topnav">
+  <nav id="topnav" class="anim-fade-down anim-d0">
     <a class="nav-logo" onclick="goTo('home')">
-      A<b>.</b>NGUYEN
-      <span class="nav-badge">DATA ENG</span>
+      ANDY<b>.</b>CHENG
+      <span class="nav-badge">ONLINE</span>
     </a>
     <div class="nav-right">
       <div class="nav-ping">
         <div class="ping-dot"></div>
-        40ms / NYC
+        32ms / NYC
       </div>
       <button id="hbtn" aria-label="Toggle navigation">
         <span></span>
@@ -110,7 +121,7 @@
     <div class="home-panel-r"></div>
     <div class="home-panel-r2"></div>
     <div class="home-grid"></div>
-    <div class="home-watermark">NGUYEN</div>
+    <div class="home-watermark">ENGINEERING</div>
 
     <div class="home-xhair">
       <svg viewBox="0 0 220 220" fill="none">
@@ -131,14 +142,14 @@
     </div>
 
     <!-- EDIT: kill feed labels -->
-    <div class="kill-feed">
+    <div class="kill-feed anim-fade-down anim-d2">
       <div class="kf-row"><span class="kf-key">DAGSTER</span>&nbsp;›&nbsp;PIPELINE_OK</div>
       <div class="kf-row alt"><span class="kf-key">DQ_SCORE</span>&nbsp;›&nbsp;94.2%</div>
       <div class="kf-row"><span class="kf-key">BQ_JOB</span>&nbsp;›&nbsp;COMPLETE</div>
     </div>
 
     <!-- EDIT: top-right readout -->
-    <div class="home-readout">
+    <div class="home-readout anim-fade-down anim-d2">
       <div class="readout-line">LAT: 40.7128° N</div>
       <div class="readout-line">LNG: 74.0060° W</div>
       <div class="readout-line burn">STATUS: ACTIVE</div>
@@ -146,7 +157,7 @@
     </div>
 
     <!-- Vertical date strip — date injected by JS -->
-    <div class="vdate-strip">
+    <div class="vdate-strip anim-fade-down anim-d3">
       <div class="vdate-line"></div>
       <div class="vdate-dot teal"></div>
       <div class="vdate-text" id="live-date">----/--/--</div>
@@ -158,33 +169,33 @@
 
     <!-- EDIT: hero copy -->
     <div class="home-copy">
-      <div class="home-eyebrow">DATA ENGINEER // NYC</div>
-      <div class="home-name">
+      <div class="home-eyebrow anim-fade-down anim-d3">DATA ENGINEER //</div>
+      <div class="home-name anim-fade-down anim-d4">
         ANDY
-        <span class="name-accent">NGUYEN</span>
-      </div>
-      <div class="home-rule">
+        <span class="name-accent">CHENG</span>
+      </div><br>
+      <div class="home-rule anim-fade-down anim-d5">
         <div class="hr-burn"></div>
         <div class="hr-teal"></div>
         <div class="hr-teal2"></div>
         <span class="hr-label">PIPELINE ARCHITECTURE · DATA GOVERNANCE</span>
       </div>
-      <p class="home-sub">
+      <p class="home-sub anim-fade-down anim-d6">
         Pipelines that don't lie. Data governance for organizations where clean data is mission-critical.
       </p>
     </div>
 
     <!-- EDIT: sidebar stats -->
     <div class="home-stats">
-      <div class="home-stat">
+      <div class="home-stat anim-fade-down anim-d4">
         <div class="stat-val">5+</div>
         <div class="stat-key">YRS EXPERIENCE</div>
       </div>
-      <div class="home-stat">
+      <div class="home-stat anim-fade-down anim-d5">
         <div class="stat-val">GCP</div>
         <div class="stat-key">PRIMARY CLOUD</div>
       </div>
-      <div class="home-stat">
+      <div class="home-stat anim-fade-down anim-d6">
         <div class="stat-val teal">OPEN</div>
         <div class="stat-key">TO WORK</div>
       </div>

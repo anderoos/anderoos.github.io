@@ -4,7 +4,7 @@
 
 #page-home {
   position: relative;
-  height: calc(100vh - var(--nav-height));
+  height: 100vh;
   overflow: hidden;
   background: var(--void);
 }
@@ -43,7 +43,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 200px;
+  font-size: clamp(82px, 22vw, 600px);
   line-height: 0.85;
   color: rgba(255, 255, 255, 0.018);
   letter-spacing: -4px;
@@ -55,9 +55,9 @@
 /* --- Rotating crosshair --- */
 .home-xhair {
   position: absolute;
-  right: 8%; top: 50%;
+  right: calc(8% - 1500px); top: 50%;
   transform: translateY(-52%);
-  width: 220px; height: 220px;
+  width: 1100px; height: 1100px;
   opacity: 0.06;
   animation: xhair-rotate 30s linear infinite;
 }
@@ -69,7 +69,7 @@
 /* --- Kill feed (top left data readout) --- */
 .kill-feed {
   position: absolute;
-  top: 60px; left: 32px;
+  top: calc(60px + 2%); left: calc(32px + 0.5%);
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -80,7 +80,7 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1px;
   color: var(--steel);
   padding: 3px 8px;
@@ -94,7 +94,7 @@
 /* --- Data readout strip (top right) --- */
 .home-readout {
   position: absolute;
-  top: 10px; right: 20px;
+  top: calc(60px + 2%); right: calc(20px + 3%);
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -102,7 +102,7 @@
 }
 .readout-line {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: rgba(0, 196, 180, 0.4);
 }
@@ -112,8 +112,8 @@
 .vdate-strip {
   position: absolute;
   left: 12px;
-  bottom: 8px;
-  top: 0;
+  /*bottom: 8px;*/
+  top: 14%;
   width: 14px;
   display: flex;
   flex-direction: column;
@@ -125,7 +125,7 @@
 }
 .vdate-text {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.22);
   writing-mode: vertical-rl;
@@ -157,11 +157,12 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 36px 32px 36px 10px;
+  padding: 36px 28px calc(36px + 3%) calc(28px);
+;
 }
 .home-eyebrow {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 4px;
   color: var(--teal);
   margin-bottom: 12px;
@@ -176,9 +177,9 @@
 }
 .home-name {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 300;
   font-style: normal;
-  font-size: clamp(62px, 9vw, 108px);
+  font-size: clamp(64px, 9vw, 110px);
   line-height: 0.86;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -194,21 +195,21 @@
   display: flex;
   align-items: center;
   gap: 0;
-  margin: 14px 0 12px;
+  margin: calc(14px - 2%) 0 12px;
 }
 .hr-burn  { width: 44px; height: 2px; background: var(--burn); }
 .hr-teal  { width: 8px;  height: 2px; background: var(--teal); margin-left: 3px; }
 .hr-teal2 { width: 3px;  height: 2px; background: var(--teal); margin-left: 2px; opacity: 0.5; }
 .hr-label {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 3px;
   color: var(--steel);
   margin-left: 10px;
 }
 
 .home-sub {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--steel);
   line-height: 1.85;
   max-width: 320px;
@@ -223,17 +224,18 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 36px 28px;
+  padding: 36px 28px calc(36px + 4%) calc(28px + 3%);
 }
 .home-stat {
   padding: 14px 0;
   border-bottom: 1px solid var(--dim);
+  
 }
 .home-stat:first-child { border-top: 1px solid var(--dim); }
 .stat-val {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 30px;
+  font-size: 32px;
   letter-spacing: 1px;
   color: var(--txt);
   line-height: 1;
@@ -241,7 +243,7 @@
 .stat-val.teal { color: var(--teal); }
 .stat-key {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
   color: var(--muted);
   margin-top: 3px;

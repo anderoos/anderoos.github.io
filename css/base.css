@@ -66,10 +66,10 @@ body::after {
   display: block;
   animation: corner-pulse 3s ease-in-out infinite;
 }
-.hud-tl { top: 8px;    left: 8px;   }
-.hud-tr { top: 8px;    right: 8px;  }
-.hud-bl { bottom: 8px; left: 8px;   }
-.hud-br { bottom: 8px; right: 8px;  }
+.hud-tl { top: calc(var(--nav-height) + 12px); left: 24px;   }
+.hud-tr { top: calc(var(--nav-height) + 12px); right: 24px;  }
+.hud-bl { bottom: calc(24px + 2%); left: 24px;   }
+.hud-br { bottom: calc(24px + 2%); right: 24px;  }
 
 @keyframes corner-pulse {
   0%, 100% { opacity: 0.45; }
@@ -95,7 +95,7 @@ body::after {
 .nav-logo {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 19px;
+  font-size: 21px;
   letter-spacing: 5px;
   color: var(--txt);
   text-decoration: none;
@@ -108,7 +108,7 @@ body::after {
 
 .nav-badge {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
   color: var(--teal);
   border: 1px solid var(--teal-line);
@@ -124,7 +124,7 @@ body::after {
 
 .nav-ping {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   color: #3a3a3a;
   letter-spacing: 1px;
   display: flex;
@@ -227,7 +227,7 @@ body::after {
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 160px;
+  font-size: 162px;
   color: rgba(255, 255, 255, 0.015);
   letter-spacing: 4px;
   pointer-events: none;
@@ -236,7 +236,7 @@ body::after {
 
 .menu-tag {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 3px;
   color: var(--steel);
   margin-bottom: 24px;
@@ -262,7 +262,7 @@ body::after {
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 52px;
+  font-size: 54px;
   letter-spacing: 3px;
   text-transform: uppercase;
   line-height: 1;
@@ -275,7 +275,7 @@ body::after {
 
 .menu-num {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   transition: color 0.15s;
   align-self: flex-end;
@@ -283,7 +283,7 @@ body::after {
 }
 
 .menu-arrow {
-  font-size: 28px;
+  font-size: 30px;
   color: var(--teal);
   opacity: 0;
   transform: translateX(-8px);
@@ -310,7 +310,7 @@ body::after {
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 80px;
+  font-size: 82px;
   color: rgba(255, 255, 255, 0.02);
   letter-spacing: 4px;
   white-space: nowrap;
@@ -319,14 +319,14 @@ body::after {
 
 .menu-stat-k {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
   color: var(--muted);
   position: relative;
   z-index: 2;
 }
 .menu-stat-v {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--steel);
   margin-top: 2px;
   position: relative;
@@ -334,6 +334,72 @@ body::after {
 }
 .menu-stat-v.online { color: var(--teal); }
 .menu-stat-v.alert  { color: var(--burn); }
+
+/* ============================================================
+   BOTTOM BANNER
+   ============================================================ */
+.bottom-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 32px;
+  background: #000;
+  border-top: 1px solid var(--dim);
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.bb-item {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--steel);
+  white-space: nowrap;
+}
+
+.bb-label {
+  color: var(--muted);
+  margin-right: 6px;
+}
+
+.bb-teal {
+  color: var(--teal);
+}
+
+.bb-sep {
+  color: var(--dim);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   LOAD-IN ANIMATIONS
+   ============================================================ */
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-fade-down { animation: fade-down 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in   { animation: fade-in  0.55s ease both; }
+
+.anim-d0 { animation-delay: 0s; }
+.anim-d1 { animation-delay: 0.12s; }
+.anim-d2 { animation-delay: 0.22s; }
+.anim-d3 { animation-delay: 0.34s; }
+.anim-d4 { animation-delay: 0.46s; }
+.anim-d5 { animation-delay: 0.56s; }
+.anim-d6 { animation-delay: 0.66s; }
+.anim-d7 { animation-delay: 0.76s; }
+.anim-d8 { animation-delay: 0.86s; }
 
 /* ============================================================
    PAGE TRANSITIONS

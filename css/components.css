@@ -23,7 +23,7 @@
 
 .s-id {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 3px;
   color: var(--teal);
   margin-bottom: 10px;
@@ -33,7 +33,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-style: italic;
-  font-size: 34px;
+  font-size: 36px;
   letter-spacing: 2px;
   color: var(--txt);
   text-transform: uppercase;
@@ -50,7 +50,7 @@
 }
 .tag {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 1px;
   padding: 2px 7px;
   border: 1px solid var(--dim);
@@ -72,7 +72,7 @@
 }
 .stack-pill {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 1px;
   padding: 2px 6px;
   background: var(--teal-fade);
@@ -103,7 +103,7 @@
   justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--teal);
   flex-shrink: 0;
   transition: border-color 0.15s, background 0.15s;
@@ -115,13 +115,13 @@
 
 .ability-label {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
   color: var(--steel);
   margin-bottom: 1px;
 }
 .ability-value {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--txt);
   font-weight: 400;
   line-height: 1.35;
@@ -153,7 +153,7 @@
 }
 .skill-label {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 1px;
   color: var(--steel);
 }
@@ -173,7 +173,7 @@
 .skill-fill.burn { background: var(--burn); }
 .skill-pct {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--muted);
   text-align: right;
 }
@@ -205,7 +205,7 @@
 }
 .agent-card-role {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 3px;
   color: var(--teal);
   margin-bottom: 6px;
@@ -213,7 +213,7 @@
 .agent-card-name {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 28px;
+  font-size: 30px;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--txt);
@@ -222,7 +222,7 @@
 }
 .agent-card-sub {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   color: var(--steel);
   letter-spacing: 1px;
 }
@@ -234,12 +234,12 @@
 }
 .ac-stat-k {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   color: var(--muted);
   letter-spacing: 1px;
 }
 .ac-stat-v {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--txt);
   font-weight: 400;
   margin-top: 1px;
@@ -308,7 +308,7 @@
 
 .project-id {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 3px;
   color: var(--teal);
   margin-bottom: 10px;
@@ -319,7 +319,7 @@
 .project-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 22px;
+  font-size: 24px;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--txt);
@@ -329,7 +329,7 @@
   z-index: 2;
 }
 .project-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--steel);
   line-height: 1.65;
   font-weight: 300;
@@ -341,7 +341,7 @@
   position: absolute;
   top: 14px; right: 24px;
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
   color: var(--teal);
   display: flex;
@@ -370,7 +370,7 @@
 }
 .xp-label {
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 8px;
   letter-spacing: 1px;
   color: var(--muted);
 }
@@ -404,7 +404,7 @@
 
 .form-field label {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 3px;
   color: var(--teal);
   display: block;
@@ -420,7 +420,7 @@
   color: var(--txt);
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 14px;
+  font-size: 16px;
   resize: none;
 }
 .form-field input::placeholder,
@@ -433,7 +433,7 @@
   color: var(--void);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 17px;
   letter-spacing: 4px;
   cursor: pointer;
   text-transform: uppercase;
@@ -460,21 +460,21 @@
 
 .channel-platform {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 2px;
   color: var(--teal);
   width: 60px;
   flex-shrink: 0;
 }
 .channel-value {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--steel);
   font-weight: 400;
   flex: 1;
 }
 .channel-arrow {
   color: var(--dim);
-  font-size: 11px;
+  font-size: 13px;
   transition: color 0.15s, transform 0.15s;
 }
 .channel-link:hover .channel-arrow {
@@ -497,7 +497,7 @@
 .sig-bar:nth-child(5) { height: 15px; background: var(--dim); }
 .sig-label {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 9px;
   color: var(--teal);
   letter-spacing: 1px;
   margin-left: 6px;
