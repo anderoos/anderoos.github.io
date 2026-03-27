@@ -1,4 +1,4 @@
-# Andy Nguyen — Portfolio
+# Andy Cheng — Portfolio
 
 Tactical HUD-style portfolio site. Valorant / Marathon aesthetic.
 Dark theme — burn orange (#E84B1A), teal (#00C4B4), void black (#050505).

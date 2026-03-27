@@ -26,9 +26,9 @@
   --muted: #333333;   /* tertiary / hints */
 
   /* --- Typography --- */
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-mono:    'Share Tech Mono', monospace;
-  --font-body:    'Barlow', sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  --font-mono:    'Share Tech Mono', 'Courier New', Courier, monospace;
+  --font-body:    'Barlow', system-ui, -apple-system, Arial, sans-serif;
 
   /* --- Layout --- */
   --nav-height:      48px;

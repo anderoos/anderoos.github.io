@@ -7,7 +7,7 @@
 
 ## Purpose
 
-This is the personal portfolio of **Andy Nguyen**, a Data Engineer based in New York City.
+This is the personal portfolio of **Andy Cheng**, a Data Engineer based in New York City.
 It showcases his technical projects, work history, and governance expertise — built to
 attract senior/staff data engineering roles and consulting opportunities.
 
@@ -61,7 +61,7 @@ All tokens live in `css/tokens.css`. Change a token once, it propagates everywhe
 | Body copy        | Barlow                | 300–400     | —      |
 
 **Rules:**
-- Hero name (`ANDY / NGUYEN`) is always `font-style: normal` — never italic
+- Hero name (`ANDY / CHENG`) is always `font-style: normal` — never italic
 - Menu nav links use italic condensed — this is intentional Valorant agent-select styling
 - All HUD readouts, badges, tags, and mono labels use `Share Tech Mono`
 - Body copy uses `Barlow` weight 300. Bump to 400 for emphasis, never bold
