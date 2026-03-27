@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andy Nguyen — Data Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&family=Share+Tech+Mono&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Styles — load order matters -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <!--
+    Add page-specific CSS here as you build each section:
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/resume.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+  -->
+</head>
+<body>
+
+  <!-- PERSISTENT HUD CHROME -->
+  <div class="edge-top"></div>
+  <div class="edge-bot"></div>
+
+  <div class="hud hud-tl">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M0 20 L0 0 L20 0" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-tr">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M20 20 L20 0 L0 0" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="20" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-bl">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M0 0 L0 20 L20 20" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="0" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-br">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M20 0 L20 20 L0 20" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="20" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <!-- NAV -->
+  <nav id="topnav">
+    <a class="nav-logo" onclick="goTo('home')">
+      A<b>.</b>NGUYEN
+      <span class="nav-badge">DATA ENG</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping">
+        <div class="ping-dot"></div>
+        40ms / NYC
+      </div>
+      <button id="hbtn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MENU OVERLAY -->
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT SCREEN</p>
+      <ul class="menu-links">
+        <li><a onclick="goTo('about')"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a onclick="goTo('resume')"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a onclick="goTo('projects')"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a onclick="goTo('contact')"><span class="menu-num">04 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <!-- EDIT: menu sidebar stats -->
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● Online</div></div>
+      <div><div class="menu-stat-k">STACK</div><div class="menu-stat-v">dbt · Dagster · BQ</div></div>
+      <div><div class="menu-stat-k">CLEARANCE</div><div class="menu-stat-v alert">SENIOR / STAFF</div></div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       PAGES
+       Each <section id="page-{name}"> is one route.
+       Non-home pages start hidden. Add more by:
+         1. Creating the section below
+         2. Adding a css/{name}.css file
+         3. Linking it in <head>
+         4. Adding the id to PAGES array in js/main.js
+       ===================================================== -->
+
+  <!-- HOME -->
+  <section id="page-home">
+    <div class="home-panel-r"></div>
+    <div class="home-panel-r2"></div>
+    <div class="home-grid"></div>
+    <div class="home-watermark">NGUYEN</div>
+
+    <div class="home-xhair">
+      <svg viewBox="0 0 220 220" fill="none">
+        <circle cx="110" cy="110" r="100" stroke="#00C4B4" stroke-width="0.5"/>
+        <circle cx="110" cy="110" r="70"  stroke="#00C4B4" stroke-width="0.5"/>
+        <circle cx="110" cy="110" r="40"  stroke="#00C4B4" stroke-width="0.5"/>
+        <circle cx="110" cy="110" r="8"   stroke="#E84B1A" stroke-width="1"/>
+        <circle cx="110" cy="110" r="2"   fill="#E84B1A"/>
+        <line x1="110" y1="0"   x2="110" y2="220" stroke="#00C4B4" stroke-width="0.5"/>
+        <line x1="0"   y1="110" x2="220" y2="110" stroke="#00C4B4" stroke-width="0.5"/>
+        <line x1="5"   y1="5"   x2="215" y2="215" stroke="#E84B1A" stroke-width="0.3" opacity="0.5"/>
+        <line x1="215" y1="5"   x2="5"   y2="215" stroke="#E84B1A" stroke-width="0.3" opacity="0.5"/>
+        <rect x="105" y="60"  width="10" height="2" fill="#00C4B4" opacity="0.6"/>
+        <rect x="105" y="158" width="10" height="2" fill="#00C4B4" opacity="0.6"/>
+        <rect x="60"  y="109" width="2"  height="2" fill="#00C4B4" opacity="0.6"/>
+        <rect x="158" y="109" width="2"  height="2" fill="#00C4B4" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <!-- EDIT: kill feed labels -->
+    <div class="kill-feed">
+      <div class="kf-row"><span class="kf-key">DAGSTER</span>&nbsp;›&nbsp;PIPELINE_OK</div>
+      <div class="kf-row alt"><span class="kf-key">DQ_SCORE</span>&nbsp;›&nbsp;94.2%</div>
+      <div class="kf-row"><span class="kf-key">BQ_JOB</span>&nbsp;›&nbsp;COMPLETE</div>
+    </div>
+
+    <!-- EDIT: top-right readout -->
+    <div class="home-readout">
+      <div class="readout-line">LAT: 40.7128° N</div>
+      <div class="readout-line">LNG: 74.0060° W</div>
+      <div class="readout-line burn">STATUS: ACTIVE</div>
+      <div class="readout-line">ROLE: DATA_ENG</div>
+    </div>
+
+    <!-- Vertical date strip — date injected by JS -->
+    <div class="vdate-strip">
+      <div class="vdate-line"></div>
+      <div class="vdate-dot teal"></div>
+      <div class="vdate-text" id="live-date">----/--/--</div>
+      <div class="vdate-dot"></div>
+      <div class="vdate-text">04 <span class="vd-star">✦</span></div>
+      <div class="vdate-dot"></div>
+      <div class="vdate-text">+ &nbsp; 14 <span class="vd-star">✦</span></div>
+    </div>
+
+    <!-- EDIT: hero copy -->
+    <div class="home-copy">
+      <div class="home-eyebrow">DATA ENGINEER // NYC</div>
+      <div class="home-name">
+        ANDY
+        <span class="name-accent">NGUYEN</span>
+      </div>
+      <div class="home-rule">
+        <div class="hr-burn"></div>
+        <div class="hr-teal"></div>
+        <div class="hr-teal2"></div>
+        <span class="hr-label">PIPELINE ARCHITECTURE · DATA GOVERNANCE</span>
+      </div>
+      <p class="home-sub">
+        Pipelines that don't lie. Data governance for organizations where clean data is mission-critical.
+      </p>
+    </div>
+
+    <!-- EDIT: sidebar stats -->
+    <div class="home-stats">
+      <div class="home-stat">
+        <div class="stat-val">5+</div>
+        <div class="stat-key">YRS EXPERIENCE</div>
+      </div>
+      <div class="home-stat">
+        <div class="stat-val">GCP</div>
+        <div class="stat-key">PRIMARY CLOUD</div>
+      </div>
+      <div class="home-stat">
+        <div class="stat-val teal">OPEN</div>
+        <div class="stat-key">TO WORK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (stub — build out next) -->
+  <section id="page-about" hidden>
+    <!-- Drop About HTML here + link css/about.css in <head> -->
+  </section>
+
+  <!-- RESUME (stub) -->
+  <section id="page-resume" hidden>
+    <!-- Drop Resume HTML here + link css/resume.css in <head> -->
+  </section>
+
+  <!-- PROJECTS (stub) -->
+  <section id="page-projects" hidden>
+    <!-- Drop Projects HTML here + link css/projects.css in <head> -->
+  </section>
+
+  <!-- CONTACT (stub) -->
+  <section id="page-contact" hidden>
+    <!-- Drop Contact HTML here + link css/contact.css in <head> -->
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

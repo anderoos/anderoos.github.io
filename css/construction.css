@@ -1,0 +1,161 @@
+/* ============================================================
+   UNDER CONSTRUCTION PAGE
+   Inherits tokens from tokens.css and chrome from base.css.
+   Add --caution as a local var since it only lives here.
+   ============================================================ */
+
+#page-construction {
+  --caution: #FFD100;
+  position: relative;
+  height: calc(100vh - var(--nav-height));
+  overflow: hidden;
+  background: var(--void);
+}
+
+/* ── TAC GRID ── */
+#page-construction .tac-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,196,180,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,196,180,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── MAIN CONTENT AREA ── */
+.uc-main {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+/* ── GHOST WATERMARK ── */
+.uc-watermark {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 180px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.015);
+  letter-spacing: -4px;
+  white-space: nowrap;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+/* ── ROTATING CROSSHAIR ── */
+.uc-xhair {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: uc-xhair-rotate 40s linear infinite;
+}
+
+@keyframes uc-xhair-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ── STATUS TAG ── */
+.uc-status {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--caution);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+.uc-status::before,
+.uc-status::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--caution);
+}
+
+/* ── HEADLINE ── */
+/* Font size uses clamp() to scale between viewport sizes.
+   Edit the three values: min, preferred (vw), max.
+   Current: min 52px, scales with viewport, max 100px.     */
+.uc-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: normal;
+  font-size: clamp(52px, 9vw, 100px);
+  line-height: 0.88;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--txt);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 6px;
+}
+
+.uc-title .acc {
+  color: var(--caution);
+  display: block;
+}
+
+/* ── SEGMENTED RULE ── */
+.uc-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  margin: 16px 0 14px;
+  position: relative;
+  z-index: 2;
+}
+.ur-caution { width: 44px; height: 2px; background: var(--caution); }
+.ur-burn    { width: 8px;  height: 2px; background: var(--burn);    margin-left: 3px; }
+.ur-teal    { width: 4px;  height: 2px; background: var(--teal);    margin-left: 2px; opacity: 0.6; }
+
+/* ── BODY COPY ── */
+.uc-sub {
+  font-size: 13px;
+  color: var(--steel);
+  line-height: 1.85;
+  max-width: 380px;
+  text-align: center;
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── TOP-RIGHT DATA READOUT ── */
+.uc-readout {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 10;
+}
+.uc-readout .ro-line {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(0, 196, 180, 0.35);
+}
+.uc-readout .ro-line.warn {
+  color: rgba(255, 209, 0, 0.45);
+}

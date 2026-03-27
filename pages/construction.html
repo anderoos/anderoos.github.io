@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andy Nguyen — Under Construction</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&family=Share+Tech+Mono&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/construction.css" />
+</head>
+<body>
+
+  <!-- PERSISTENT HUD CHROME -->
+  <div class="edge-top"></div>
+  <div class="edge-bot"></div>
+
+  <div class="hud hud-tl">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M0 20 L0 0 L20 0" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-tr">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M20 20 L20 0 L0 0" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="20" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-bl">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M0 0 L0 20 L20 20" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="0" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-br">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M20 0 L20 20 L0 20" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="20" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- NAV -->
+  <nav id="topnav">
+    <a class="nav-logo" href="../index.html">
+      A<b>.</b>NGUYEN
+      <span class="nav-badge">DATA ENG</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping">
+        <div class="ping-dot"></div>
+        40ms / NYC
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONSTRUCTION PAGE -->
+  <section id="page-construction">
+
+    <div class="tac-grid"></div>
+
+    <!-- EDIT: top-right readout labels -->
+    <div class="uc-readout">
+      <div class="ro-line">LAT: 40.7128° N</div>
+      <div class="ro-line">LNG: 74.0060° W</div>
+      <div class="ro-line warn">STATUS: BUILDING</div>
+      <div class="ro-line warn">ETA: SOON™</div>
+    </div>
+
+    <div class="uc-main">
+
+      <div class="uc-watermark">BUILD</div>
+
+      <!-- Rotating crosshair -->
+      <div class="uc-xhair">
+        <svg viewBox="0 0 360 360" fill="none">
+          <circle cx="180" cy="180" r="160" stroke="#00C4B4" stroke-width="0.5"/>
+          <circle cx="180" cy="180" r="110" stroke="#00C4B4" stroke-width="0.5"/>
+          <circle cx="180" cy="180" r="60"  stroke="#00C4B4" stroke-width="0.5"/>
+          <circle cx="180" cy="180" r="12"  stroke="#FFD100" stroke-width="1"/>
+          <circle cx="180" cy="180" r="3"   fill="#FFD100"/>
+          <line x1="180" y1="0"   x2="180" y2="360" stroke="#00C4B4" stroke-width="0.5"/>
+          <line x1="0"   y1="180" x2="360" y2="180" stroke="#00C4B4" stroke-width="0.5"/>
+          <line x1="8"   y1="8"   x2="352" y2="352" stroke="#FFD100" stroke-width="0.3" opacity="0.5"/>
+          <line x1="352" y1="8"   x2="8"   y2="352" stroke="#FFD100" stroke-width="0.3" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <!-- EDIT: status label and headline -->
+      <div class="uc-status">ZONE RESTRICTED</div>
+
+      <div class="uc-title">
+        UNDER
+        <span class="acc">CONSTRUCTION</span>
+      </div>
+
+      <div class="uc-rule">
+        <div class="ur-caution"></div>
+        <div class="ur-burn"></div>
+        <div class="ur-teal"></div>
+      </div>
+
+      <!-- EDIT: body copy -->
+      <p class="uc-sub">
+        This section is actively being built. Check back soon — or reach out directly if you need something now.
+      </p>
+
+    </div>
+
+  </section>
+
+</body>
+</html>

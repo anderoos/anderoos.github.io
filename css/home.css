@@ -1,0 +1,248 @@
+/* ============================================================
+   HOME PAGE
+   ============================================================ */
+
+#page-home {
+  position: relative;
+  height: calc(100vh - var(--nav-height));
+  overflow: hidden;
+  background: var(--void);
+}
+
+/* --- Angled background panels --- */
+.home-panel-r {
+  position: absolute;
+  top: 0; right: 0;
+  width: 48%; height: 100%;
+  background: var(--p1);
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+}
+.home-panel-r2 {
+  position: absolute;
+  top: 0; right: 0;
+  width: 44%; height: 100%;
+  background: var(--p2);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 4% 100%);
+}
+
+/* --- Tac grid overlay --- */
+.home-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,196,180,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,196,180,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* --- Ghost watermark --- */
+.home-watermark {
+  position: absolute;
+  bottom: -20px; left: -10px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 200px;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.018);
+  letter-spacing: -4px;
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --- Rotating crosshair --- */
+.home-xhair {
+  position: absolute;
+  right: 8%; top: 50%;
+  transform: translateY(-52%);
+  width: 220px; height: 220px;
+  opacity: 0.06;
+  animation: xhair-rotate 30s linear infinite;
+}
+@keyframes xhair-rotate {
+  from { transform: translateY(-52%) rotate(0deg);   }
+  to   { transform: translateY(-52%) rotate(360deg); }
+}
+
+/* --- Kill feed (top left data readout) --- */
+.kill-feed {
+  position: absolute;
+  top: 60px; left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 10;
+}
+.kf-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--steel);
+  padding: 3px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 2px solid var(--teal);
+}
+.kf-row.alt { border-left-color: var(--burn); }
+.kf-row .kf-key { color: var(--teal); }
+.kf-row.alt .kf-key { color: var(--heat); }
+
+/* --- Data readout strip (top right) --- */
+.home-readout {
+  position: absolute;
+  top: 10px; right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 10;
+}
+.readout-line {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(0, 196, 180, 0.4);
+}
+.readout-line.burn { color: rgba(232, 75, 26, 0.35); }
+
+/* --- Vertical date strip --- */
+.vdate-strip {
+  position: absolute;
+  left: 12px;
+  bottom: 8px;
+  top: 0;
+  width: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 16px;
+  gap: 10px;
+  z-index: 20;
+}
+.vdate-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.22);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  line-height: 1;
+}
+.vdate-text .vd-star { color: rgba(232, 75, 26, 0.6); }
+.vdate-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
+}
+.vdate-dot.teal { background: rgba(0, 196, 180, 0.45); }
+.vdate-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08));
+  max-height: 60px;
+}
+
+/* --- Hero copy (left side) --- */
+.home-copy {
+  position: absolute;
+  left: 26px; top: 0; bottom: 0;
+  width: 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px 32px 36px 10px;
+}
+.home-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--teal);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--teal);
+}
+.home-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: normal;
+  font-size: clamp(62px, 9vw, 108px);
+  line-height: 0.86;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--txt);
+}
+.home-name .name-accent {
+  color: var(--burn);
+  display: block;
+}
+
+/* Segmented underline rule */
+.home-rule {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 14px 0 12px;
+}
+.hr-burn  { width: 44px; height: 2px; background: var(--burn); }
+.hr-teal  { width: 8px;  height: 2px; background: var(--teal); margin-left: 3px; }
+.hr-teal2 { width: 3px;  height: 2px; background: var(--teal); margin-left: 2px; opacity: 0.5; }
+.hr-label {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 3px;
+  color: var(--steel);
+  margin-left: 10px;
+}
+
+.home-sub {
+  font-size: 13px;
+  color: var(--steel);
+  line-height: 1.85;
+  max-width: 320px;
+  font-weight: 300;
+}
+
+/* --- Stats sidebar (right side) --- */
+.home-stats {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px 28px;
+}
+.home-stat {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--dim);
+}
+.home-stat:first-child { border-top: 1px solid var(--dim); }
+.stat-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 1px;
+  color: var(--txt);
+  line-height: 1;
+}
+.stat-val.teal { color: var(--teal); }
+.stat-key {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-top: 3px;
+}
