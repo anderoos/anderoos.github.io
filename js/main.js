@@ -70,6 +70,22 @@
     });
   }
 
+  // ── CONFIG-DRIVEN DOM ────────────────────────────────────────
+  function applyConfig() {
+    if (typeof SITE_CONFIG === 'undefined') return;
+    var c = SITE_CONFIG;
+    var map = {
+      'cfg-ping':     c.ping + 'ms',
+      'cfg-location': c.locationFull,
+      'cfg-role':     c.role,
+      'cfg-status':   '● ' + c.status,
+    };
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = map[id];
+    });
+  }
+
   // ── PAGE-TOP COLLAPSE ON SCROLL ─────────────────────────────
   function setupPageTopCollapse() {
     var pageTop = document.querySelector('.page-top');
@@ -83,6 +99,7 @@
 
   // ── INIT ────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
+    applyConfig();
     setLiveDate();
     setupPageTopCollapse();
     scrambleCoords();

@@ -1,6 +1,5 @@
 /* ============================================================
-   AUTH — client-side session password gate
-   Hash: SHA-256 of the access passphrase
+  Mostly security theater, I don't have any sensitive information in this repo.
    ============================================================ */
 
 (function () {

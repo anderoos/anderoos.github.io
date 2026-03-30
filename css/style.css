@@ -25,7 +25,7 @@
   --font-mono:    'Share Tech Mono', 'Courier New', Courier, monospace;
   --font-body:    'Barlow', system-ui, -apple-system, Arial, sans-serif;
 
-  --nav-height:      48px;
+  --nav-height:      calc(48px + env(safe-area-inset-top));
   --sidebar-width:   200px;
   --contact-aside:   260px;
 }
@@ -120,12 +120,14 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
 #topnav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: var(--nav-height);
+  height: calc(var(--nav-height) + env(safe-area-inset-top));
+  padding-top: env(safe-area-inset-top);
   z-index: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 18px;
+  padding-left: max(18px, env(safe-area-inset-left));
+  padding-right: max(18px, env(safe-area-inset-right));
   background: rgba(5, 5, 5, 0.98);
   border-bottom: 1px solid var(--dim);
 }
@@ -390,7 +392,7 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   align-items: center;
   gap: 32px;
   white-space: nowrap;
-  animation: bb-scroll 24s linear infinite;
+  animation: bb-scroll 40s linear infinite;
 }
 
 @keyframes bb-scroll {

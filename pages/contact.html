@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Andy Cheng — Contact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,23 +14,57 @@
   <div class="edge-top"></div>
   <div class="edge-bot"></div>
 
+  <!-- BOTTOM BANNER -->
   <div class="bottom-banner">
     <div class="bb-track">
       <span class="bb-item"><span class="bb-label">DEPLOYMENT DATE</span> 2026.03.27</span>
       <span class="bb-sep">·</span>
-      <span class="bb-item"><span class="bb-label">STATUS</span> <span class="bb-teal">ACTIVE</span></span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY</span> DIETER RAMS</span>
       <span class="bb-sep">·</span>
-      <span class="bb-item"><span class="bb-label">LOCATION</span> NYC</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH</span> CLAUDE</span>
       <span class="bb-sep">·</span>
-      <span class="bb-item"><span class="bb-label">ROLE</span> DATA ENGINEER</span>
+      <span class="bb-item"><span class="bb-label">DESIGNED WITH</span> NASA PUNK IN MIND</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">SKETCH</span> CREATE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">BREAK</span> DISRUPT</span>
       <span class="bb-sep">·</span>
       <span class="bb-item"><span class="bb-label">DEPLOYMENT DATE</span> 2026.03.27</span>
       <span class="bb-sep">·</span>
-      <span class="bb-item"><span class="bb-label">STATUS</span> <span class="bb-teal">ACTIVE</span></span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY</span> DIETER RAMS</span>
       <span class="bb-sep">·</span>
-      <span class="bb-item"><span class="bb-label">LOCATION</span> NYC</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH</span> CLAUDE</span>
       <span class="bb-sep">·</span>
-      <span class="bb-item"><span class="bb-label">ROLE</span> DATA ENGINEER</span>
+      <span class="bb-item"><span class="bb-label">DESIGNED WITH</span> NASA PUNK IN MIND</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">SKETCH</span> CREATE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">BREAK</span> DISRUPT</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEPLOYMENT DATE</span> 2026.03.27</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY</span> DIETER RAMS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH</span> CLAUDE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DESIGNED WITH</span> NASA PUNK IN MIND</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">SKETCH</span> CREATE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">BREAK</span> DISRUPT</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEPLOYMENT DATE</span> 2026.03.27</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY</span> DIETER RAMS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH</span> CLAUDE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DESIGNED WITH</span> NASA PUNK IN MIND</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">SKETCH</span> CREATE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">BREAK</span> DISRUPT</span>
+      <span class="bb-item"><span class="bb-label">WHY ARE YOU STILL READING THIS</span> ... WEIRDO</span>
       <span class="bb-sep">·</span>
     </div>
   </div>
@@ -70,7 +104,7 @@
     <div class="nav-right">
       <div class="nav-ping">
         <div class="ping-dot"></div>
-        32ms
+        <span id="cfg-ping">32ms</span>
       </div>
       <button id="hbtn" aria-label="Toggle navigation">
         <span></span>
@@ -91,9 +125,9 @@
       </ul>
     </div>
     <div class="menu-right">
-      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
-      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
-      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v" id="cfg-location">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v" id="cfg-role">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online" id="cfg-status">● ACTIVE, LOOKING</div></div>
     </div>
   </div>
 
@@ -106,9 +140,9 @@
       <div class="pt-scanbar"></div>
       <div class="pt-classify">// OPEN CHANNEL · ENCRYPTED COMMS · 05</div>
       <div class="pt-coords">
-        <div>24H RESPONSE</div>
-        <div>NYC · REMOTE</div>
-        <div class="burn">SIGNAL: STRONG</div>
+        <div class="readout-line">24H RESPONSE</div>
+        <div class="readout-line">NYC · REMOTE</div>
+        <div class="readout-line burn">SIGNAL: STRONG</div>
       </div>
       <div class="pt-wm">COMMS</div>
       <div class="pt-hline"></div>
@@ -150,6 +184,7 @@
     </div>
   </section>
 
+  <script src="../js/config.js"></script>
   <script src="../js/auth.js"></script>
   <script src="../js/main.js"></script>
 </body>
