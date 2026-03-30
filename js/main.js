@@ -1,23 +1,15 @@
 /* ============================================================
    PORTFOLIO JS
-   Navigation, transitions, date stamp, skill bars.
+   Menu toggle, page-top collapse, date stamp, skill bars,
+   coord scramble.
    ============================================================ */
 
 (function () {
   'use strict';
 
-  // ── CONFIG ──────────────────────────────────────────────────
-  // Add page IDs here as you build them out.
-  const PAGES = ['home', 'about', 'resume', 'projects', 'contact'];
-
-  // ── STATE ───────────────────────────────────────────────────
-  let current = 'home';
-  let transitioning = false;
-
   // ── ELEMENTS ────────────────────────────────────────────────
   const hbtn        = document.getElementById('hbtn');
   const menuOverlay = document.getElementById('menu-overlay');
-  const wipe        = document.getElementById('page-wipe');
 
   // ── MENU ────────────────────────────────────────────────────
   function openMenu() {
@@ -34,51 +26,7 @@
     menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
   }
 
-  // Expose globally for inline onclick handlers
-  window.toggleMenu = toggleMenu;
-
-  // ── PAGE TRANSITIONS ────────────────────────────────────────
-  function goTo(id) {
-    if (!PAGES.includes(id) || id === current || transitioning) return;
-    transitioning = true;
-    closeMenu();
-
-    // Wipe in (left → right)
-    wipe.style.transition = 'transform 0.22s cubic-bezier(0.77,0,0.175,1)';
-    wipe.style.transformOrigin = 'left';
-    wipe.style.transform = 'scaleX(1)';
-
-    setTimeout(function () {
-      // Swap visible page
-      const prev = document.getElementById('page-' + current);
-      const next = document.getElementById('page-' + id);
-      if (prev) prev.hidden = true;
-      if (next) next.hidden = false;
-
-      current = id;
-      window.location.hash = id === 'home' ? '' : id;
-
-      // Wipe out (right → left)
-      wipe.style.transformOrigin = 'right';
-      wipe.style.transform = 'scaleX(0)';
-
-      setTimeout(function () {
-        transitioning = false;
-        onPageEnter(id);
-      }, 240);
-    }, 240);
-  }
-
-  // Expose globally
-  window.goTo = goTo;
-
-  // ── PAGE ENTER HOOKS ────────────────────────────────────────
-  function onPageEnter(id) {
-    if (id === 'about') animateSkillBars();
-  }
-
   // ── SKILL BARS ──────────────────────────────────────────────
-  // Each .skill-fill element uses data-width="N" (0–100).
   function animateSkillBars() {
     document.querySelectorAll('.skill-fill[data-width]').forEach(function (el) {
       el.style.width = el.dataset.width + '%';
@@ -96,36 +44,62 @@
     el.textContent = y + '-' + m + '-' + day;
   }
 
-  // ── HASH ROUTING ────────────────────────────────────────────
-  // Supports direct linking: yoursite.com/#projects
-  function routeFromHash() {
-    const hash = window.location.hash.replace('#', '');
-    if (hash && PAGES.includes(hash) && hash !== 'home') {
-      PAGES.forEach(function (id) {
-        const el = document.getElementById('page-' + id);
-        if (el) el.hidden = (id !== hash);
-      });
-      current = hash;
-      onPageEnter(hash);
+  // ── COORD SCRAMBLE ──────────────────────────────────────────
+  function scrambleCoords() {
+    var CHARS = '0123456789!@#$%<>?|[]~±°×÷*^&';
+
+    function randChar() {
+      return CHARS[Math.floor(Math.random() * CHARS.length)];
     }
+
+    document.querySelectorAll('[data-scramble]').forEach(function (el) {
+      var original = el.textContent;
+      // Keep everything before the first digit static; scramble the rest
+      var prefixEnd = original.search(/\d/);
+      if (prefixEnd === -1) prefixEnd = 0;
+      var prefix = original.slice(0, prefixEnd);
+      var value  = original.slice(prefixEnd);
+
+      setInterval(function () {
+        var out = prefix;
+        for (var i = 0; i < value.length; i++) {
+          out += value[i] === ' ' ? ' ' : randChar();
+        }
+        el.textContent = out;
+      }, 80);
+    });
+  }
+
+  // ── PAGE-TOP COLLAPSE ON SCROLL ─────────────────────────────
+  function setupPageTopCollapse() {
+    var pageTop = document.querySelector('.page-top');
+    if (!pageTop) return;
+    window.addEventListener('scroll', function () {
+      var scrolled = window.scrollY > 0;
+      pageTop.classList.toggle('collapsed', scrolled);
+      document.body.classList.toggle('page-scrolled', scrolled);
+    }, { passive: true });
   }
 
   // ── INIT ────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     setLiveDate();
-    routeFromHash();
+    setupPageTopCollapse();
+    scrambleCoords();
 
-    // Wire hamburger button
+    // Animate skill bars if present on this page
+    if (document.querySelectorAll('.skill-fill[data-width]').length) {
+      setTimeout(animateSkillBars, 200);
+    }
+
     if (hbtn) hbtn.addEventListener('click', toggleMenu);
 
-    // Close menu on overlay background click
     if (menuOverlay) {
       menuOverlay.addEventListener('click', function (e) {
         if (e.target === menuOverlay) closeMenu();
       });
     }
 
-    // Keyboard nav
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeMenu();
     });
