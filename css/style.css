@@ -1900,3 +1900,80 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   letter-spacing: 0.08em;
   min-height: 14px;
 }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* ── Tablet (≤ 900px) ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .menu-links li a { font-size: 40px; }
+
+  .projects-grid   { grid-template-columns: 1fr; }
+  .interests-grid  { grid-template-columns: 1fr; }
+
+  #page-about .section-grid,
+  #page-resume .section-grid,
+  #page-projects .section-grid,
+  #page-interests .section-grid,
+  #page-contact .section-grid {
+    margin: 0 6%;
+  }
+}
+
+/* ── Mobile (≤ 600px) ───────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  /* Nav */
+  .nav-ping { display: none; }
+
+  /* Menu — hide right stats panel, full-width links */
+  .menu-right { display: none; }
+  .menu-left  { border-right: none; padding: 32px 28px; }
+  .menu-links li a {
+    font-size: 32px;
+    letter-spacing: 1px;
+    padding: 12px 0;
+  }
+  .menu-num   { font-size: 11px; padding-bottom: 3px; }
+  .menu-arrow { font-size: 22px; }
+
+  /* Page-top hero — shorter, tighter */
+  .page-top {
+    height: calc(52vh - var(--nav-height));
+    padding: 0 5% 28px;
+  }
+  .pt-classify { display: none; }
+  .pt-coords   { display: none; }
+  .pt-wm       { display: none; }
+
+  /* Section content margins */
+  #page-about .section-grid,
+  #page-resume .section-grid,
+  #page-projects .section-grid,
+  #page-interests .section-grid,
+  #page-contact .section-grid {
+    margin: 0 0;
+  }
+
+  #page-about .s-main,
+  #page-resume .s-main,
+  #page-projects .s-main,
+  #page-interests .s-main,
+  #page-contact .s-main {
+    padding: 20px 18px;
+  }
+
+  /* Grids — single column */
+  .projects-grid  { grid-template-columns: 1fr; }
+  .interests-grid { grid-template-columns: 1fr; }
+
+  /* Home page decorative elements — hide on small screens */
+  .kill-feed     { display: none; }
+  .home-readout  { display: none; }
+  .vdate-strip   { display: none; }
+  .hud           { display: none; }
+
+  /* Collapsed page-top bar */
+  .page-top.collapsed { padding: 0 5%; }
+}

@@ -26,7 +26,7 @@
       '<div class="auth-box">',
       '  <div class="auth-eyebrow">// RESTRICTED ACCESS</div>',
       '  <div class="auth-title">CLEARANCE REQUIRED</div>',
-      '  <div class="auth-sub">Enter access code to proceed</div>',
+      '  <div class="auth-sub">Enter password to continue</div>',
       '  <form id="auth-form" autocomplete="off">',
       '    <input id="auth-input" type="password" placeholder="ACCESS CODE" spellcheck="false" autocomplete="off" />',
       '    <button type="submit">AUTHENTICATE</button>',
