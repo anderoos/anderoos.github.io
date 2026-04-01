@@ -1307,18 +1307,16 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   transition: opacity 0.2s ease, transform 0.2s ease, margin 0.2s ease;
 }
 
-/* Collapsed state — added via JS on scroll */
+/* Collapsed state — height is unchanged; transform drives the position.
+   Content stays at flex-end so it sits in the visible bottom strip. */
 .page-top.collapsed {
-  height: 72px;
-  padding: 0 10%;
+  padding: 0 10% 16px;
   background: var(--burn);
-  justify-content: center;
+  justify-content: flex-end;
+  transition: background 0.25s ease, padding 0.2s ease;
 }
 .page-top.collapsed .pt-eyebrow {
-  opacity: 0;
-  transform: translateY(-8px);
-  margin: 0;
-  pointer-events: none;
+  display: none;
 }
 .page-top.collapsed .pt-title {
   font-size: 40px;
@@ -1326,10 +1324,7 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   color: #fff;
 }
 .page-top.collapsed .pt-sub {
-  opacity: 0;
-  transform: translateY(-8px);
-  margin: 0;
-  pointer-events: none;
+  display: none;
 }
 
 /* Page-top decorative overlay elements */

@@ -104,7 +104,7 @@
   <nav id="topnav" class="anim-fade-down anim-d0">
     <a class="nav-logo" href="index.html">
       ANDY<b>.</b>CHENG
-      <span class="nav-badge">ONLINE</span>
+      <span class="nav-badge" id="cfg-navbadge"></span>
     </a>
     <div class="nav-right">
       <div class="nav-ping">
@@ -131,9 +131,9 @@
       </ul>
     </div>
     <div class="menu-right">
-      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v" id="cfg-location">New York City</div></div>
-      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v" id="cfg-role">Data Engineer</div></div>
-      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online" id="cfg-status">● ACTIVE, LOOKING</div></div>
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v" id="cfg-location"></div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v" id="cfg-role"></div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online" id="cfg-status"></div></div>
     </div>
   </div>
 
@@ -164,17 +164,17 @@
 
     <!-- EDIT: kill feed labels -->
     <div class="kill-feed anim-fade-down anim-d2" id="cfg-kill-feed">
-      <div class="kf-row"><span class="kf-key">DAGSTER</span>&nbsp;›&nbsp;PIPELINE_OK</div>
-      <div class="kf-row alt"><span class="kf-key">DQ_SCORE</span>&nbsp;›&nbsp;94.2%</div>
-      <div class="kf-row"><span class="kf-key">BQ_JOB</span>&nbsp;›&nbsp;COMPLETE</div>
+      <div class="kf-row"><span class="kf-key"></span></div>
+      <div class="kf-row alt"><span class="kf-key"></span></div>
+      <div class="kf-row"><span class="kf-key"></span></div>
     </div>
 
     <!-- EDIT: top-right readout -->
     <div class="home-readout anim-fade-down anim-d2">
       <div class="readout-line" data-scramble>LAT: 40.7128° N</div>
       <div class="readout-line" data-scramble>LNG: 74.0060° W</div>
-      <div class="readout-line burn" id="cfg-readout-status">STATUS: LOOKING</div>
-      <div class="readout-line" id="cfg-readout-role">ROLE: DATA_ENG</div>
+      <div class="readout-line burn" id="cfg-readout-status"></div>
+      <div class="readout-line" id="cfg-readout-role"></div>
     </div>
 
     <!-- Vertical date strip — date injected by JS -->
@@ -192,7 +192,7 @@
 
     <!-- EDIT: hero copy -->
     <div class="home-copy">
-      <div class="home-eyebrow anim-fade-down anim-d3">DATA ENGINEER //</div>
+      <div class="home-eyebrow anim-fade-down anim-d3" id="cfg-eyebrow"></div>
       <div class="home-name anim-fade-down anim-d4">
         ANDY
         <span class="name-accent">CHENG</span>
@@ -220,8 +220,8 @@
         <div class="stat-key">PRIMARY CLOUD PLATFORM</div>
       </div>
       <div class="home-stat anim-fade-down anim-d6">
-        <div class="stat-val teal" id="cfg-availability"></div>
-        <div class="stat-key"> id="cfg-availability_l2"</div>
+        <div class="stat-val teal" id="cfg-availability"> </div>
+        <div class="stat-key" id="cfg-availability_l2"> </div>
       </div>
     </div>
   </section>

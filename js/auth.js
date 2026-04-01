@@ -1,5 +1,5 @@
 /* ============================================================
-  Mostly security theater, I don't have any sensitive information in this repo.
+  Mostly security theater
    ============================================================ */
 
 (function () {

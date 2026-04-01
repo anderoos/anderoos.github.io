@@ -75,25 +75,67 @@
     if (typeof SITE_CONFIG === 'undefined') return;
     var c = SITE_CONFIG;
     var map = {
-      'cfg-ping':     c.ping + 'ms',
-      'cfg-location': c.locationFull,
-      'cfg-role':     c.role,
-      'cfg-status':   '● ' + c.status,
+      'cfg-ping':           c.ping + 'ms',
+      'cfg-location':       c.locationFull,
+      'cfg-role':           c.role,
+      'cfg-navbadge':       c.navBadgeStatus,
+      'cfg-eyebrow':        c.eyeBrow,
+      'cfg-status':         '● ' + c.status + ', ' + c.lookingStatus,
+      'cfg-readout-status': 'STATUS: ' + c.lookingStatus,
+      'cfg-readout-role':   'ROLE: ' + c.roleShort,
+      'cfg-tagline':        c.heroTagline,
+      'cfg-bio':            c.heroBio,
+      'cfg-years-exp':      c.yearsExperience,
+      'cfg-cloud':          c.primaryCloudPlatform,
+      'cfg-availability':   c.availability,
+      'cfg-availability_l2': c.availability_l2,
     };
     Object.keys(map).forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.textContent = map[id];
     });
+
+    // Kill feed — built from array
+    var kf = document.getElementById('cfg-kill-feed');
+    if (kf && Array.isArray(c.killFeed)) {
+      kf.innerHTML = c.killFeed.map(function (row) {
+        return '<div class="kf-row' + (row.alt ? ' alt' : '') + '">' +
+               '<span class="kf-key">' + row.key + '</span>' +
+               '&nbsp;›&nbsp;' + row.value +
+               '</div>';
+      }).join('');
+    }
   }
 
   // ── PAGE-TOP COLLAPSE ON SCROLL ─────────────────────────────
   function setupPageTopCollapse() {
     var pageTop = document.querySelector('.page-top');
     if (!pageTop) return;
+
+    var expandedH  = pageTop.offsetHeight;
+    var collapsedH = 72;
+    var delta      = expandedH - collapsedH;
+    var collapsed  = false;
+
     window.addEventListener('scroll', function () {
-      var scrolled = window.scrollY > 0;
-      pageTop.classList.toggle('collapsed', scrolled);
-      document.body.classList.toggle('page-scrolled', scrolled);
+      var y      = window.scrollY;
+      var shrink = Math.min(y, delta);
+
+      // Translate the page-top upward — purely visual, zero layout cost.
+      // The nav (z-index 600) clips whatever rises above it, so only the
+      // bottom (expandedH - shrink) px of the hero remains visible.
+      // The page-body never moves in the layout, so it scrolls at 1:1 speed.
+      pageTop.style.transform = 'translateY(-' + shrink + 'px)';
+
+      if (!collapsed && shrink >= delta) {
+        collapsed = true;
+        pageTop.classList.add('collapsed');
+        document.body.classList.add('page-scrolled');
+      } else if (collapsed && shrink < delta) {
+        collapsed = false;
+        pageTop.classList.remove('collapsed');
+        document.body.classList.remove('page-scrolled');
+      }
     }, { passive: true });
   }
 
