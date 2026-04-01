@@ -86,7 +86,7 @@
       'cfg-tagline':         c.heroTagline,
       'cfg-bio':             c.heroBio,
       'cfg-years-exp':       c.yearsExperience,
-      'cfg-years-exp-full':  c.yearsExperience + '+ YEARS EXP',
+      'cfg-years-exp-full':  c.yearsExperience + ' YEARS EXP',
       'cfg-cloud':           c.primaryCloudPlatform,
       'cfg-availability':    c.availability,
       'cfg-availability_l2': c.availability_l2,
