@@ -2027,5 +2027,5 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   .hud-code-strip  { display: none; }
 
   /* Collapsed page-top bar */
-  .page-top.collapsed { padding: 0 5%; }
+  .page-top.collapsed { padding: 0 5% 16px; }
 }
