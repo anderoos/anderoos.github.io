@@ -8,13 +8,12 @@ var SITE_CONFIG = {
   role:                   'DATA ENGINEER',
   roleShort:              'DATA_ENG',  // stats
   location:               'NYC',
-  ping:                   '< 10',  // navbar
+  ping:                   'CONNECTION STABLE ',  // navbar
   navBadgeStatus:         'ONLINE',
-  // lookingStatus:          'LOOKING',
 
   // MENU
   locationFull:           'New York City',
-  status:                 'STABLE',
+  status:                 'ONLINE',
 
   // HOME PAGE
   yearsExperience:        '2+',

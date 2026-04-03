@@ -75,7 +75,7 @@
     if (typeof SITE_CONFIG === 'undefined') return;
     var c = SITE_CONFIG;
     var map = {
-      'cfg-ping':           c.ping + 'ms',
+      'cfg-ping':           c.ping,
       'cfg-location':       c.locationFull,
       'cfg-role':           c.role,
       'cfg-nav-badge':       c.navBadgeStatus,
