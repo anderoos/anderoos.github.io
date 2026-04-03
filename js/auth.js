@@ -31,6 +31,7 @@
       '    <button type="submit">AUTHENTICATE</button>',
       '  </form>',
       '  <div id="auth-error" class="auth-error"></div>',
+      '  <a href="../index.html" class="auth-back">← Return to Home</a>',
       '</div>'
     ].join('');
     return overlay;

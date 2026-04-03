@@ -540,9 +540,12 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   background: var(--void);
   padding: 24px 22px 18px;
   position: relative;
-  cursor: default;
+  cursor: pointer;
   transition: background 0.2s;
   overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 .project-card:hover { background: var(--p1); }
 
@@ -1514,6 +1517,20 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   letter-spacing: 0.08em;
   min-height: 14px;
 }
+
+.auth-back {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--steel);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.12s;
+}
+.auth-back:hover { color: var(--txt); }
 
 /* ============================================================
    RESPONSIVE

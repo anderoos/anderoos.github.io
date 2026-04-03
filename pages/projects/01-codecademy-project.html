@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — [Project Name]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    /* ── Project post layout ─────────────────────── */
+    .post-hero {
+      margin-top: var(--nav-height);
+      padding: 64px 10% 48px;
+      border-bottom: 1px solid var(--dim);
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--burn);
+    }
+
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      transition: color 0.12s;
+    }
+    .post-back:hover { color: var(--teal); }
+    .post-back::before { content: '‹'; font-size: 14px; }
+
+    .post-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: var(--txt);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .post-status {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .post-status::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: blink 2s ease-in-out infinite;
+    }
+    .post-status.wip { color: var(--muted); }
+    .post-status.wip::before { background: var(--muted); animation: none; }
+    .post-status.live { color: var(--teal); }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    /* ── Post content ────────────────────────────── */
+    .post-content {
+      padding: 56px 5% 64px;
+      max-width: 90%;
+    }
+
+    .post-section { margin-bottom: 52px; }
+
+    .post-section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .post-section-label::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--burn);
+    }
+
+    .post-h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .post-h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .post-p {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .post-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--dim);
+      margin: 44px 0;
+    }
+
+    .post-callout {
+      border-left: 2px solid var(--teal);
+      padding: 14px 20px;
+      background: var(--p1);
+      margin: 24px 0;
+    }
+    .post-callout p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--teal);
+      line-height: 1.7;
+    }
+
+    .post-outcomes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dim);
+      border: 1px solid var(--dim);
+      margin: 24px 0;
+    }
+    .outcome-cell { background: var(--void); padding: 20px 22px; }
+    .outcome-val {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2px;
+      color: var(--txt);
+      line-height: 1;
+    }
+    .outcome-val.teal { color: var(--teal); }
+    .outcome-val.burn { color: var(--burn); }
+    .outcome-key {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .post-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .post-list li {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.65;
+      font-weight: 300;
+      padding-left: 16px;
+      position: relative;
+    }
+    .post-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-family: var(--font-mono);
+    }
+
+    /* ── Prev / Next nav ─────────────────────────── */
+    .post-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--dim);
+      margin-top: 80px;
+    }
+    .post-nav-link {
+      padding: 28px 10%;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .post-nav-link:hover { background: var(--p1); }
+    .post-nav-link.next {
+      border-left: 1px solid var(--dim);
+      text-align: right;
+      align-items: flex-end;
+    }
+    .pn-dir {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .pn-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      line-height: 1.1;
+      transition: color 0.12s;
+    }
+    .post-nav-link:hover .pn-title { color: var(--teal); }
+    .pn-id {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    /* Empty slot when only one neighbor exists */
+    .post-nav-empty { padding: 28px 10%; }
+
+    /* ── Mobile ──────────────────────────────────── */
+    @media (max-width: 700px) {
+      .post-hero { padding: 40px 6% 32px; }
+      .post-content { padding: 36px 6% 48px; }
+      .post-outcomes { grid-template-columns: repeat(2, 1fr); }
+      .post-nav { grid-template-columns: 1fr; }
+      .post-nav-link.next { border-left: none; border-top: 1px solid var(--dim); text-align: left; align-items: flex-start; }
+      .post-nav-link { padding: 20px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <!-- BOTTOM BANNER -->
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> [PROJECT NAME]</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> [STACK]</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> [PROJECT NAME]</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> [STACK]</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping">
+        <div class="ping-dot"></div>
+      </div>
+      <button id="hbtn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <!-- POST HERO -->
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-001 // [LEARNING CHALLENGE]</div>
+    <h1 class="post-title">[CODEECADEMY PROJECTS]</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2024.01.01</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">Python</span>
+      <span class="tag">Analytics</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Computer Science</span>
+    </div>
+  </header>
+
+  <!-- POST CONTENT -->
+  <main class="post-content">
+
+    <!-- OVERVIEW -->
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        I debated heavily on including this page but I wanted a section to celebrate my achievements and milestones (mostly baby steps) in my data analytics journey. My journey started in July of 2023 and continues to grow daily. This page is broken up into two sections. Codecademy, which I use daily to grow my toolkit, and Columbia's Data Analytics Bootcamp where I graduated in Feb 2024.
+      </p>
+      <div class="post-callout">
+        <a href="https://github.com/anderoos/cc-challenges-projects"><p>/// Github Repository - Codecademy</p></a>
+      </div>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <!-- PROBLEM -->
+    <div class="post-section">
+      <div class="post-section-label">Highlights</div>
+      <h2 class="post-h2">ALL PROJECTS</h2>
+      <p class="post-p">
+        I found Codecademy's courses profoundly rewarding when compared to Columbia's curriculum. Codecademy deep dives into more complex concepts that are fundamental to any data scientist's toolkit, including shell scripting, object oriented programming, linear algebra and applied probability and statistics. I began my journey with a Python introductory course in July 2023 and I continue to use their platform to this day to expand my knowledge and transition into data science and engineering.
+      </p>
+      <p class="post-p">
+        Thus far, I've taken the following courses/ career paths/ skill paths from Codecademy:
+      </p>
+      <ul class="post-list">
+        <li>Data Science: Natural Language Processing</li>
+        <li>Deep Learning with TensorFlow</li>
+        <li>Machine Learning/ AI Engineering</li>
+        <li>Data Scientist: Machine Learning</li>
+        <li>Analyze Data with R</li>
+        <li>Data Science: Inference Specialist</li>
+        <li>Data Science: Analytics</li>
+        <li>Data Science Foundations</li>
+        <li>ML and AI Fundamentals</li>
+        <li>Master Statistics with Python</li>
+        <li>Fundamental Math for Data Science</li>
+        <li>Analyze Data with Python</li>
+        <li>Cleaning Data with Python</li>
+        <li>Visualize Data with Python</li>
+        <li>Software Engineerin for Data Scientists</li>
+        <li>Software Engineering for Python</li>
+        <li>Learn Statistics with Numpy</li>
+        <li>Learn Python 3</li>
+        <li>Analyze Data with SQL</li>
+        <li>Bash/ Terminal</li>
+        <li>Learn Command Line</li>
+        <li>Learn Javascript</li>
+      </ul>
+    </div>
+    <div class="post-rule"></div>
+
+    <!-- SOLUTION -->
+    <div class="post-section">
+      <div class="post-section-label">Related Projects</div>
+      <h2 class="post-h2">Related Projects</h2>
+      <p class="post-h3"><strong>Python - NLP</strong></p>
+      <ul class="post-list">
+        <li>Presidential Speeches: Analyzing inaugural speeches to understand their use of language and conveyance of agenda with Word Embedding.</li>
+        <li>News Analysis: Employing tf-idf to analyze article contents and identify key descriptive terms.</li>
+        <li>Predicting Mystery Postcard: Using Naive Bayes Classifier (NBC) to deduce the sender of a mystery letter.</li>
+        <li>Discover Insights from Classic Texts: Utilizing Noun Phrase Parsing and Verb Phrase Parsing to examine classic texts.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Python - Big Data with PySpark</strong></p>
+      <ul class="post-list">
+        <li>Analyze Common Crawl Data with PySpark: An introduction to PySpark Queries and Resilient Distributed Datasets (RDD).</li>
+      </ul>
+
+      <p class="post-h3"><strong>Python - Deep Learning</strong></p>
+      <ul class="post-list">
+        <li>Classifying Galaxies with Convolutional Neural Networks: Building a model to categorize galaxies using a dataset of 10,000 images.</li>
+        <li>Deep Learning Classification with Heart Disease Data: Predicting patient survival from heart disease using a Kaggle dataset.</li>
+        <li>Deep Learning Regression with Admissions Data: Creating a regression model to predict college admission chances from various features.</li>
+        <li>Implementing Neural Networks: Predicting life expectancy with WHO Global Health data using a neural network.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Python - Machine Learning (ML)</strong></p>
+      <ul class="post-list">
+        <li>Book Recommender: Building a recommendation system for books using the surprise library.</li>
+        <li>Perceptron: Modeling logical operations (and, or, xor) with a perceptron.</li>
+        <li>School Catalog: Refresher on Object-Oriented Programming (OOP).</li>
+        <li>Building ML Pipelines: Using UCI’s bone marrow data to construct a pipeline for preprocessing, cleaning, and classification.</li>
+        <li>Predict whether an individual makes over $50K with Gradient Boosting: Employing Census Data for income prediction.</li>
+        <li>Predict whether an individual makes over $50K with Random Forest: Using Census Data for income prediction.</li>
+        <li>Classifying Raisins with Hyper-parameter Tuning: Differentiating grain raisin types with Murat Koklu’s Kaggle dataset.</li>
+        <li>Predicting Wine Quality with Logistic Regression: Using UCI’s Machine Learning Repository data for wine quality prediction with regularization techniques.</li>
+        <li>Predict Baseball Strike zones with Support Vector Machines: Identifying the strike zone’s decision boundary with a baseball dataset.</li>
+        <li>Email Similarity with Naive Bayes Classifier: Classifying email types with the fetch_20_newsgroups dataset from sklearn.datasets.</li>
+        <li>Handwriting Recognition with KMeans Clustering: Predicting handwriting using the digits library from sklearn.datasets.</li>
+        <li>Wrapper Methods: Assessing feature selection methods for improving an obesity prediction model.</li>
+        <li>Find the flag! with Decision Trees: Using flag data to generate decision trees.</li>
+        <li>Cancer Classifier with K Nearest Neighbors: Predicting breast cancer with SkLearn’s neighbors library.</li>
+        <li>Predicting Honey Production with Linear Regressions: Predicting honey production output by 2050 with SkLearn’s Linear model module.</li>
+        <li>Transformating Data into Features: Handling categorical data, scaling, and working with datetime features.</li>
+        <li>Predicting Income with Social Data: Exploring the impact of age, education, and gender on income with R.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Data Analysis - BI</strong></p>
+      <ul class="post-list">
+        <li>Intro to Tableau for Data Analysis: Learning Tableau to analyze the relationship between NYC trees and income.</li>
+        <li>Roller Coasters: Visualizing roller coasters with functions.</li>
+        <li>Board Slides for FoodWheel: Deriving business and consumer insights.</li>
+        <li>Constellations: Charting the Orion star system.</li>
+        <li>Airline Trends: Charting trends in the airline industry.</li>
+      </ul>
+
+      <p class="post-h3"><strong>SQL - Engineering</strong></p>
+      <ul class="post-list">
+        <li>First-Last-Touch-Attribution: Analyzing media channel attribution.</li>
+        <li>Calculating Churn Rates: Determining churn rate for Codeflix.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Data Analytics - AB Testing</strong></p>
+      <ul class="post-list">
+        <li>Ad effectiveness with AB Testing: Examining conversion rates with AB Testing.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Data Analytics</strong></p>
+      <ul class="post-list">
+        <li>NBA Trends: Analyzing associations between scores, win rates, and other trends.</li>
+        <li>EDA: Diagnosing Diabetes: Investigating diagnostic factors affecting diabetic outcomes.</li>
+        <li>Exploring Mushrooms: Summarizing the nominal characteristics of mushrooms.</li>
+        <li>Analyzing Internet Use with Python: Examining global internet usage trends from 1990 to 2020.</li>
+        <li>Page Visits Funnel: Analyzing user purchase completion rates on an ecommerce website.</li>
+        <li>Product Defects: Predicting daily product defect counts.</li>
+        <li>Analyzing High-Speed Railway Delays: Investigating the impact of weather on railway times.</li>
+        <li>Summarizing Automobile Evaluation Data: Summarizing car manufacturer data.</li>
+        <li>Election Results: Creating basic data visualizations with pyplot.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Python</strong></p>
+      <ul class="post-list">
+        <li>Concurrent Programming: Exploring concurrent programming.</li>
+        <li>Aisha’s Greetings with Context Managers: Generating card messages with context managers and constructors.</li>
+        <li>ATM Logging with Error Logging: Practicing error logging.</li>
+        <li>Boredless Tourist with Generators: Object-Oriented Programming practice.</li>
+        <li>Basta Faloozin with Constructors: Constructor practice.</li>
+        <li>Crunchie Munchies: Performing basic statistics with numpy.</li>
+        <li>Functional Programming with Functions: Learning to write basic functions.</li>
+        <li>Scrabble for basic function syntax: Understanding basic function syntax.</li>
+        <li>Thread Shed: Practicing with loops.</li>
+      </ul>
+
+      <p class="post-h3"><strong>Shell Scripts</strong></p>
+      <ul class="post-list">
+        <li>Building build script: Constructing a build script.</li>
+      </ul>
+    </div>
+
+    <!-- PREV / NEXT -->
+    <nav class="post-nav">
+      <!-- Remove whichever direction doesn't apply -->
+      <a class="post-nav-link prev" href="index.html">
+        <span class="pn-dir">../</span>
+        <span class="pn-title">Return Home</span>
+        <span class="pn-id"></span>
+      </a>
+      <a class="post-nav-link next" href="[next-slug].html">
+        <span class="pn-dir">Next →</span>
+        <span class="pn-title">[Next Project Name]</span>
+        <span class="pn-id">OP-00n</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>
