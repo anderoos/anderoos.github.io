@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — [Project Name]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    /* ── Project post layout ─────────────────────── */
+    .post-hero {
+      margin-top: var(--nav-height);
+      padding: 64px 10% 48px;
+      border-bottom: 1px solid var(--dim);
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--burn);
+    }
+
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      transition: color 0.12s;
+    }
+    .post-back:hover { color: var(--teal); }
+    .post-back::before { content: '‹'; font-size: 14px; }
+
+    .post-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: var(--txt);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .post-status {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .post-status::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: blink 2s ease-in-out infinite;
+    }
+    .post-status.wip { color: var(--muted); }
+    .post-status.wip::before { background: var(--muted); animation: none; }
+    .post-status.live { color: var(--teal); }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    /* ── Post content ────────────────────────────── */
+    .post-content {
+      padding: 56px 5% 64px;
+      max-width: 90%;
+    }
+
+    .post-section { margin-bottom: 52px; }
+
+    .post-section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .post-section-label::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--burn);
+    }
+
+    .post-h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .post-h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+
+    .post-p {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .post-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--dim);
+      margin: 44px 0;
+    }
+
+    .post-callout {
+      border-left: 2px solid var(--teal);
+      padding: 14px 20px;
+      background: var(--p1);
+      margin: 24px 0;
+    }
+    .post-callout p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--teal);
+      line-height: 1.7;
+    }
+
+    .post-outcomes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dim);
+      border: 1px solid var(--dim);
+      margin: 24px 0;
+    }
+    .outcome-cell { background: var(--void); padding: 20px 22px; }
+    .outcome-val {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2px;
+      color: var(--txt);
+      line-height: 1;
+    }
+    .outcome-val.teal { color: var(--teal); }
+    .outcome-val.burn { color: var(--burn); }
+    .outcome-key {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .post-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .post-list li {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.65;
+      font-weight: 300;
+      padding-left: 16px;
+      position: relative;
+    }
+    .post-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-family: var(--font-mono);
+    }
+
+    /* ── Prev / Next nav ─────────────────────────── */
+    .post-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--dim);
+      margin-top: 80px;
+    }
+    .post-nav-link {
+      padding: 28px 10%;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .post-nav-link:hover { background: var(--p1); }
+    .post-nav-link.next {
+      border-left: 1px solid var(--dim);
+      text-align: right;
+      align-items: flex-end;
+    }
+    .pn-dir {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .pn-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      line-height: 1.1;
+      transition: color 0.12s;
+    }
+    .post-nav-link:hover .pn-title { color: var(--teal); }
+    .pn-id {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+
+    /* Empty slot when only one neighbor exists */
+    .post-nav-empty { padding: 28px 10%; }
+
+    /* ── Mobile ──────────────────────────────────── */
+    @media (max-width: 700px) {
+      .post-hero { padding: 40px 6% 32px; }
+      .post-content { padding: 36px 6% 48px; }
+      .post-outcomes { grid-template-columns: repeat(2, 1fr); }
+      .post-nav { grid-template-columns: 1fr; }
+      .post-nav-link.next { border-left: none; border-top: 1px solid var(--dim); text-align: left; align-items: flex-start; }
+      .post-nav-link { padding: 20px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <!-- BOTTOM BANNER -->
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> [PROJECT NAME]</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> [STACK]</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> [PROJECT NAME]</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> [STACK]</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping">
+        <div class="ping-dot"></div>
+      </div>
+      <button id="hbtn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <!-- POST HERO -->
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-002 // [ANALYTICS]</div>
+    <h1 class="post-title">[SPATIAL ANALYSIS OF NYC BAKERIES]</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2024.02</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">[ANALYTICS]</span>
+      <span class="tag">[DATA VIS]</span>
+      <span class="tag">[STATISTICS]</span>
+    </div>
+  </header>
+
+  <!-- POST CONTENT -->
+  <main class="post-content">
+
+    <!-- OVERVIEW -->
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        One of my first solo analytics projects, completed as a contractor for Chengu. The report uncovers entrepreneurial opportunities in NYC's pastry and bakery restaurant sector, assessing market viability and risk to help the client make an informed decision on where and what type of restaurant to open.</p>
+      <div class="post-callout">
+        <a href="https://github.com/anderoos/analysis-of-nyc-bakeries"><p>/// Github Repository - Analysis of NYC's Dessert Sector</p></a>
+      </div>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <!-- PROBLEM -->
+    <div class="post-section">
+      <div class="post-section-label">Problem</div>
+      <h2 class="post-h2">What needed solving</h2>
+      <p class="post-p">
+        New York is often crowned as the most diverse place on earth. With about 200,000 small businesses operating in New York City, it is one of the most competitive arenas for entrepreneurs in the United States. In this competitive space, entrepreneurs often question the viability in launching new ventures in NYC. In this exploratory analysis, I aim to identify potential opportunities for bakery and dessert businesses in NYC, using data from Yelp's developer API.
+      </p>
+      <p class="post-h3"><strong>Stakeholder Questions</strong></p>
+      <ul class="post-list">
+        <li>What is the viability of opening a dessert shop in NYC?</li>
+        <li>Are there areas more likely to see success than others?</li>
+        <li>What kind of pastries should I avoid selling?</li>
+      </ul>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <!-- SOLUTION -->
+    <div class="post-section">
+      <div class="post-section-label">Solution</div>
+      <h2 class="post-h2">How it was built</h2>
+      <p class="post-p">
+        Information of NYC's businesses were aggregated from Yelp's API using key words associated with desserts (ie bake, cake, desserts, donut, bakery, patisserie, viennoiserie, etc.). ETL principles were used to clean and tidy the dataset to improve integrity and usability. Discrete values were scaled for normality. Keywords, and symbols were binary encoded to simplify the analyses. KNN Imputation was also performed to impute missing information.
+      </p>
+      <p class="post-p">
+        A exploratory and statistical analysis was performed to observe the distribution of specialty shops across the five boroughs. Using the mean review_count and ratings as a metric for success, ANOVA and Tukey's Range test was performed to observe the mean differences between each business cohort. Other features like business 'phone' was also analyzed to determine if displaying a business number improves. ANOVA/ Tukey's Range test was also performed between the business's price points and rating/ review metrics.
+      </p>
+      <p class="post-p">
+        The 'success' metric was calculated by finding the normalized 50th percentile of review_counts and ratings. Businesses exceeding both were given the feature 'is_successful'. Chi2 was then performed to observe the likelihood of success of each business category.
+      </p>
+      <p class="post-p">
+        Finally, using the unsupervised learning method DBSCAN, a geospatial clustering analysis was performed to observe which areas had the most successful businesses.
+      </p>
+      <p class="post-p">
+        In the information era, trends and fads move fast. This analysis cannot account for social media presence and the effect of influencers on the success of businesses. This analysis also is limited to population density and demographic of local neighborhoods. Additionally, yelp does not provide the age of the business, which would be a true testament for the success of the business.​​​​​​​
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <!-- OUTCOMES -->
+    <div class="post-section">
+      <div class="post-section-label">Outcomes</div>
+      <h2 class="post-h2">Results</h2>
+      <p class="post-p">
+      Although bakeries and desserts classified businesses did not meet expectations, this does not indicate that these business types are not viable. This might also suggest a call for better talent and products in these sectors. Cafes having higher mean differences and standardized residual values may suggest that coffee shops provide an entry point for new customers for different business categories. Given the high mean difference in the 'other' category, savory items may entice more customers as well.
+      </p>
+      <p class="post-p">
+      We also see businesses in areas of Queens, Brooklyn and Manhattan performing better than others, suggesting population density or demographic has an impact on the likelihood of a business seeing success.
+      </p>
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <div class="outcome-val teal">REASSESSED</div>
+          <div class="outcome-key">Product Lineup</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val">PRIORITIZATION</div>
+          <div class="outcome-key">of coffee and beverage products</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val burn">TRIBECA</div>
+          <div class="outcome-key">More success for niche restaurants</div>
+        </div>
+      </div>
+      <p class="post-p">
+        This analysis reveals that dessert-focused businesses in New York City face a complex landscape of different challenges. However, with a strategic business model and optimal location, they can significantly increase their chances of success. Within the dessert sector, bakeries account for 25% of businesses within this cohort.
+      </p>
+      <p class="post-p">
+        Comparative analysis between dessert and bakery categories and cafes reveals interesting dynamics. Dessert and bakery have a low mean difference in ratings, indicating a narrower range in customer satisfaction, but typically score lower than cafes. Coffee shops in particular stand out with the highest review counts, suggesting that they are more favorable of this cohort.
+      </p>
+      <p class="post-p">
+        When investigating price sensitivity among customers showed more nuanced behavior. Businesses at premium price points (four dollar signs) face more scrutiny, as shown by the large spread in mean differences, indicating more varied customer perceptions, however averages highest of all four price points. Mid-tiered businesses (three dollar sign) encounters critical reviews but not to the degree of four-dollar-sign establishments. When compared to two and one dollar sign businesses, the spread in ratings indicates that these businesses draw less scrutiny when compared to their three dollar and four dollar counterparts. There were significant differences in review_counts between four and three dollar sign businesses versus one and two dollar sign businesses, which merits further investigation. Despite one and two dollar sign businesses drawing less scrutiny, they typically see less foot traffic when compared to the three and four dollar price point business counterparts.
+      </p>
+      <p class="post-p">
+        Diving deep[er into the success metrics with Chi-square analysis revealed insightful revelations. By comparing expected and actual results, this analysis yielded a Chi2 value of 84.46 with a p-value of 0.05, indicating a statistically significant difference between business categories. Contrary to what we have seen so far, bakeries were found to be less likely to achieve 'success' compared to random chance, indicated by its magnitude and direction in the 0 column. Conversely, ice cream shops, cafes and chocolate shops emerged as categories with a high chance of success.
+      </p>
+      <p class="post-p">
+        DBSCAN spatial cluster analysis was then performed to cluster businesses that were labeled as 'successful'. Given the geographic sparsity of businesses in Queens and Brooklyn when compared to Manhattan, cluster distances were modified for each borough. Within the dessert sector, we see that the UES, Midtown and Tribeca has the highest density of 'successful' businesses. In Queens, clusters are more diffuse, particularly in Eastern Queens. LIC, Sunnyside, Astoria, Woodside show strong clustering, while Ridgewood, Forest Hills, Jamaica, Flushing and Bayside are more sparse. In Brooklyn, western Brooklyn seems to see more successful businesses, particularly in areas of Bushwick, Williamsburg, Redhook, and Fort Hamilton.
+      </p>
+
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/old/category-dist.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/old/category-dist.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/price-imputation-results.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/price-imputation-results.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/meandiffs.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/meandiffs.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+      </div>
+
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/mean_diff_by_price.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/mean_diff_by_price.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/display_phone.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/display_phone.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/chi2_residuals.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/chi2_residuals.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+      </div>
+
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/manhattan_cluster.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/manhattan_cluster.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/brooklyn_cluster.png" target="_blank">
+            <img src="https://raw.githubusercontent.com/anderoos/analysis-of-nyc-bakeries/main/Images/revised-images/brooklyn_cluster.png" style="max-width:100%;"/>
+          </a>
+        </div>
+        <div class="outcome-cell">
+          <a href="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/queens_cluster.png" target="_blank">
+            <img src="https://github.com/anderoos/analysis-of-nyc-bakeries/blob/main/Images/revised-images/queens_cluster.png?raw=true" style="max-width:100%;"/>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREV / NEXT -->
+    <nav class="post-nav">
+      <!-- Remove whichever direction doesn't apply -->
+      <a class="post-nav-link prev" href="01-codecademy-project.html">
+        <span class="pn-dir">← Previous</span>
+        <span class="pn-title">[CODEECADEMY PROJECTS]</span>
+        <span class="pn-id">OP-001</span>
+      </a>
+      <a class="post-nav-link next" href="../construction.html">
+        <span class="pn-dir">Next →</span>
+        <span class="pn-title">[Next Project Name]</span>
+        <span class="pn-id">OP-00n</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>
