@@ -1617,39 +1617,8 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   .home-panel-r2   { display: none; }
   .bottom-banner   { display: none; }
 
-  /* Home page — stack layout vertically */
-  #page-home {
-    height: auto;
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-  }
-  .home-copy {
-    position: relative;
-    left: auto; top: auto; bottom: auto;
-    width: 100%;
-    padding: calc(var(--nav-height) + 32px) 24px 32px;
-    justify-content: flex-start;
-  }
-  .home-name {
-    font-size: clamp(44px, 14vw, 160px);
-  }
-  .home-stats {
-    position: relative;
-    right: auto; top: auto; bottom: auto;
-    width: 100%;
-    padding: 8px 24px 40px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0;
-  }
-  .home-stat {
-    flex: 1 1 50%;
-    border-bottom: 1px solid var(--dim);
-    border-right: 1px solid var(--dim);
-  }
-  .home-stat:first-child { border-top: 1px solid var(--dim); }
-  .stat-val { font-size: 36px; }
+  /* Home page — scale font only */
+  .home-name { font-size: clamp(44px, 14vw, 160px); }
 
   /* Collapsed page-top bar */
   .page-top.collapsed { padding: 0 5% 16px; }
