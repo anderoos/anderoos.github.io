@@ -885,7 +885,7 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
 .stat-val {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 56px;
+  font-size: 48px;
   letter-spacing: -2px;
   color: var(--txt);
   line-height: 1;
@@ -1613,8 +1613,6 @@ body.page-scrolled .hud-tr { top: calc(var(--nav-height) + 72px + 12px); }
   .hud-tac-map     { display: none; }
   .hud-code-strip  { display: none; }
   .home-vline-r    { display: none; }
-  .home-panel-r    { display: none; }
-  .home-panel-r2   { display: none; }
   .bottom-banner   { display: none; }
 
   /* Home page — scale font only */
