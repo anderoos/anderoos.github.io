@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — Predicting COVID with CNNs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .post-hero {
+      margin-top: var(--nav-height);
+      padding: 64px 10% 48px;
+      border-bottom: 1px solid var(--dim);
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--burn);
+    }
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      transition: color 0.12s;
+    }
+    .post-back:hover { color: var(--teal); }
+    .post-back::before { content: '‹'; font-size: 14px; }
+    .post-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .post-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: var(--txt);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .post-status {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .post-status::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: blink 2s ease-in-out infinite;
+    }
+    .post-status.live { color: var(--teal); }
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .post-content {
+      padding: 56px 5% 64px;
+      max-width: 90%;
+    }
+    .post-section { margin-bottom: 52px; }
+    .post-section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .post-section-label::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--burn);
+    }
+    .post-h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .post-h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .post-p {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .post-rule { width: 100%; height: 1px; background: var(--dim); margin: 44px 0; }
+    .post-callout {
+      border-left: 2px solid var(--teal);
+      padding: 14px 20px;
+      background: var(--p1);
+      margin: 24px 0;
+    }
+    .post-callout p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--teal);
+      line-height: 1.7;
+    }
+    .post-outcomes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dim);
+      border: 1px solid var(--dim);
+      margin: 24px 0;
+    }
+    .outcome-cell { background: var(--void); padding: 20px 22px; }
+    .outcome-val {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2px;
+      color: var(--txt);
+      line-height: 1;
+    }
+    .outcome-val.teal { color: var(--teal); }
+    .outcome-val.burn { color: var(--burn); }
+    .outcome-key {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+    .post-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .post-list li {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.65;
+      font-weight: 300;
+      padding-left: 16px;
+      position: relative;
+    }
+    .post-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-family: var(--font-mono);
+    }
+    .post-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--dim);
+      margin-top: 80px;
+    }
+    .post-nav-link {
+      padding: 28px 10%;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .post-nav-link:hover { background: var(--p1); }
+    .post-nav-link.next {
+      border-left: 1px solid var(--dim);
+      text-align: right;
+      align-items: flex-end;
+    }
+    .pn-dir {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .pn-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      line-height: 1.1;
+      transition: color 0.12s;
+    }
+    .post-nav-link:hover .pn-title { color: var(--teal); }
+    .pn-id {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .post-nav-empty { padding: 28px 10%; }
+    @media (max-width: 700px) {
+      .post-hero { padding: 40px 6% 32px; }
+      .post-content { padding: 36px 6% 48px; }
+      .post-outcomes { grid-template-columns: repeat(2, 1fr); }
+      .post-nav { grid-template-columns: 1fr; }
+      .post-nav-link.next { border-left: none; border-top: 1px solid var(--dim); text-align: left; align-items: flex-start; }
+      .post-nav-link { padding: 20px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> COVID DETECTION</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> PYTHON · TENSORFLOW · CNN</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> COVID DETECTION</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> PYTHON · TENSORFLOW · CNN</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping"><div class="ping-dot"></div></div>
+      <button id="hbtn" aria-label="Toggle navigation"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-004 // DEEP LEARNING</div>
+    <h1 class="post-title">Predicting COVID with Convolutional Neural Networks</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2024.02</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">Python</span>
+      <span class="tag">TensorFlow</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">Computer Vision</span>
+    </div>
+  </header>
+
+  <main class="post-content">
+
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        COVID-19 (SARS-CoV-2) is a highly infectious disease that led to a global shutdown between 2020 and 2023. While rapid antigen testing is effective, it is costly, time-consuming, and requires specimen collection. This project proposes an image classification model using chest X-rays to distinguish patients with COVID-19, viral pneumonia, and normal lung presentation — with the potential to reduce testing costs, improve patient experience, and minimize HCP exposure to biohazards.
+      </p>
+      <div class="post-callout">
+        <a href="https://github.com/anderoos/covid-detection" target="_blank">
+          <p>/// Github Repository — COVID Detection</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Methods</div>
+      <h2 class="post-h2">Approach</h2>
+      <p class="post-p">
+        Using chest X-ray data from Kaggle, provided by researchers at the University of Montreal, images and labels were extracted to train a convolutional neural network using TensorFlow. The model was trained on 217,859 parameters derived from 251 images, classifying X-rays into three categories: Normal, COVID-19, and Viral Pneumonia.
+      </p>
+      <p class="post-p">
+        The training process used image augmentation techniques to improve the model's ability to generalize from visual features. The architecture comprised four convolutional layers with filter sizes of 256 and 64, kernel sizes of 7 and 3, and max pooling with 5×5 and 3×3 grids to reduce feature dimensions.
+      </p>
+      <p class="post-p">
+        Despite strong classification accuracy in the first model, subsequent attempts to implement VGG16 and VGG19 architectures faced challenges in achieving stable learning.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Outcomes</div>
+      <h2 class="post-h2">Results</h2>
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <div class="outcome-val teal">98%</div>
+          <div class="outcome-key">COVID-19 Classification Accuracy</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val">90%</div>
+          <div class="outcome-key">Viral Pneumonia Accuracy</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val burn">87%</div>
+          <div class="outcome-key">Normal Case Accuracy</div>
+        </div>
+      </div>
+      <p class="post-p">
+        The CNN demonstrates a strong ability to classify chest X-rays across all three categories. The 98% accuracy for COVID-19 cases indicates high efficacy in identifying features associated with infection. The slightly lower pneumonia accuracy (90%) may reflect early or late-stage disease presentations that are harder to distinguish. Normal case accuracy (87%) may be affected by subtle variations in lung appearance from smoking, pre-existing conditions, or prior medical history.
+      </p>
+      <p class="post-p">
+        Crucially, the model did not misclassify viral pneumonia as COVID-19, demonstrating meaningful feature separation between the two. Additional research with a larger, more diverse dataset would be needed before considering broader clinical applications.
+      </p>
+    </div>
+
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="03-citibikes.html">
+        <span class="pn-dir">← Previous</span>
+        <span class="pn-title">Visualizing Citibikes</span>
+        <span class="pn-id">OP-003</span>
+      </a>
+      <a class="post-nav-link next" href="05-customer-segmentation.html">
+        <span class="pn-dir">Next →</span>
+        <span class="pn-title">Customer Segmentation</span>
+        <span class="pn-id">OP-005</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

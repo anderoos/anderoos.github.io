@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — Customer Segmentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .post-hero {
+      margin-top: var(--nav-height);
+      padding: 64px 10% 48px;
+      border-bottom: 1px solid var(--dim);
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--burn);
+    }
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      transition: color 0.12s;
+    }
+    .post-back:hover { color: var(--teal); }
+    .post-back::before { content: '‹'; font-size: 14px; }
+    .post-id {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .post-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      color: var(--txt);
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .post-status {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .post-status::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: blink 2s ease-in-out infinite;
+    }
+    .post-status.live { color: var(--teal); }
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .post-content {
+      padding: 56px 5% 64px;
+      max-width: 90%;
+    }
+    .post-section { margin-bottom: 52px; }
+    .post-section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .post-section-label::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
+      background: var(--burn);
+    }
+    .post-h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .post-h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .post-p {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .post-rule { width: 100%; height: 1px; background: var(--dim); margin: 44px 0; }
+    .post-callout {
+      border-left: 2px solid var(--teal);
+      padding: 14px 20px;
+      background: var(--p1);
+      margin: 24px 0;
+    }
+    .post-callout p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--teal);
+      line-height: 1.7;
+    }
+    .post-outcomes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dim);
+      border: 1px solid var(--dim);
+      margin: 24px 0;
+    }
+    .outcome-cell { background: var(--void); padding: 20px 22px; }
+    .outcome-val {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: -2px;
+      color: var(--txt);
+      line-height: 1;
+    }
+    .outcome-val.teal { color: var(--teal); }
+    .outcome-val.burn { color: var(--burn); }
+    .outcome-key {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+    .post-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .post-list li {
+      font-size: 14px;
+      color: var(--steel);
+      line-height: 1.65;
+      font-weight: 300;
+      padding-left: 16px;
+      position: relative;
+    }
+    .post-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-family: var(--font-mono);
+    }
+    .post-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--dim);
+      margin-top: 80px;
+    }
+    .post-nav-link {
+      padding: 28px 10%;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+    .post-nav-link:hover { background: var(--p1); }
+    .post-nav-link.next {
+      border-left: 1px solid var(--dim);
+      text-align: right;
+      align-items: flex-end;
+    }
+    .pn-dir {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: var(--steel);
+      text-transform: uppercase;
+    }
+    .pn-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+      color: var(--txt);
+      text-transform: uppercase;
+      line-height: 1.1;
+      transition: color 0.12s;
+    }
+    .post-nav-link:hover .pn-title { color: var(--teal); }
+    .pn-id {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .post-nav-empty { padding: 28px 10%; }
+    @media (max-width: 700px) {
+      .post-hero { padding: 40px 6% 32px; }
+      .post-content { padding: 36px 6% 48px; }
+      .post-outcomes { grid-template-columns: repeat(2, 1fr); }
+      .post-nav { grid-template-columns: 1fr; }
+      .post-nav-link.next { border-left: none; border-top: 1px solid var(--dim); text-align: left; align-items: flex-start; }
+      .post-nav-link { padding: 20px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> CUSTOMER SEGMENTATION</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> PYSPARK · SQL · ML</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> CUSTOMER SEGMENTATION</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> PYSPARK · SQL · ML</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping"><div class="ping-dot"></div></div>
+      <button id="hbtn" aria-label="Toggle navigation"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-005 // MACHINE LEARNING</div>
+    <h1 class="post-title">Customer Segmentation with Artificial Ecommerce Data</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2024.02</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">PySpark</span>
+      <span class="tag">SQL</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">RFM Analysis</span>
+    </div>
+  </header>
+
+  <main class="post-content">
+
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        A collaborative project with fellow students from the Columbia Data Analytics Bootcamp. Using e-commerce data from Kaggle, the goal was to uncover trends in business performance, analyze customer behaviors, and leverage machine learning to predict churn and identify low-value customers. My primary role covered ETL, feature engineering, and the machine learning components.
+      </p>
+      <div class="post-callout">
+        <a href="https://github.com/anderoos/customer-segmentation" target="_blank">
+          <p>/// Github Repository — Customer Segmentation</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Methods</div>
+      <h2 class="post-h2">Approach</h2>
+
+      <p class="post-h3">ETL and Feature Engineering</p>
+      <p class="post-p">
+        Given the scale of the dataset (250,000 records), ETL and feature engineering were handled with PySpark and SQL. The primary table was split into three: a customer profile table aggregated by customerID, a sales-by-date table aggregated on purchase date, and a transformed table with encoded categorical features prepared for ML.
+      </p>
+
+      <p class="post-h3">Exploratory Data Analysis</p>
+      <p class="post-p">
+        EDA examined overall business performance. Revenue trajectory showed expected growth. Books and clothing category sales dominated home and electronics, with no notable gender-based differences in shopping category. Sales count, order totals, and product price were normally distributed, indicating a healthy baseline.
+      </p>
+
+      <p class="post-h3">RFM Analysis</p>
+      <p class="post-p">
+        RFM (Recency, Frequency, Monetary) analysis was used to segment customers based on buying behavior. Scores from 1–5 were assigned across all three dimensions (with recency inverted, as a smaller date gap is more favorable). Customers were binned into low, mid, and high value segments. Most customers fell into the low-value bin. Overlapping RFM value segments with customer segments showed that recency of purchase was the dominant driver of RFM score — more so than frequency or monetary value.
+      </p>
+
+      <p class="post-h3">Predicting Churn and Customer Value</p>
+      <p class="post-p">
+        RandomForestClassifier, optimized with Sequential Backward Selection and GridSearchCV, was used to classify low-value customers and predict churn from initial purchase data. F1 score was used for the low-value model due to class imbalance; accuracy was used for the churn model.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Outcomes</div>
+      <h2 class="post-h2">Results</h2>
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <div class="outcome-val teal">86%</div>
+          <div class="outcome-key">F1 Score — Low Value Model</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val">85%</div>
+          <div class="outcome-key">Churn Prediction Accuracy</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val burn">250K</div>
+          <div class="outcome-key">Records Processed</div>
+        </div>
+      </div>
+      <p class="post-p">
+        In the low-value customer model, purchase date scored over 20% in feature importance, suggesting that external factors — economic, social, or political — play a significant role in this segment, alongside price and total purchase amount. In the churn model, purchase amount, date, and price contributed roughly equally, with no single feature dominating.
+      </p>
+      <p class="post-p">
+        While both models show relative robustness, precision scores were poor in both cases due to class imbalance. These models would not be recommended for deployment as-is given the high false-positive rate. However, the F1 and accuracy scores confirm that predicting churn and customer value from initial purchase data is achievable with additional feature engineering and data collection.
+      </p>
+    </div>
+
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="04-covid-detection.html">
+        <span class="pn-dir">← Previous</span>
+        <span class="pn-title">Predicting COVID with CNNs</span>
+        <span class="pn-id">OP-004</span>
+      </a>
+      <a class="post-nav-link next" href="06-ab-testing.html">
+        <span class="pn-dir">Next →</span>
+        <span class="pn-title">AB Testing — MSU Library</span>
+        <span class="pn-id">OP-006</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

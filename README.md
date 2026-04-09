@@ -1,7 +1,7 @@
 # Andy Cheng — Portfolio
 
-Tactical HUD-style portfolio site. Valorant / Marathon aesthetic.
-Dark theme — burn orange (#E84B1A), teal (#00C4B4), void black (#050505).
+Tactical HUD-style personal portfolio. NASA-punk / dark terminal aesthetic.
+Dark theme — burn orange `#E84B1A`, teal `#00C4B4`, void black `#050505`.
 
 ---
 
@@ -9,61 +9,77 @@ Dark theme — burn orange (#E84B1A), teal (#00C4B4), void black (#050505).
 
 ```
 portfolio/
-├── index.html          ← Entry point. All pages live here as <section> stubs.
+├── index.html                    ← Home page
+├── robots.txt
 ├── css/
-│   ├── tokens.css      ← DESIGN TOKENS. Edit colors, fonts, spacing here.
-│   ├── base.css        ← Global reset, scanlines, HUD chrome, nav, menu overlay.
-│   ├── components.css  ← Reusable patterns: cards, skill bars, tags, forms.
-│   ├── home.css        ← Home page only styles.
-│   ├── about.css       ← (add when building About)
-│   ├── resume.css      ← (add when building Resume)
-│   ├── projects.css    ← (add when building Projects)
-│   └── contact.css     ← (add when building Contact)
-└── js/
-    └── main.js         ← Navigation, page transitions, date stamp, skill bars.
+│   ├── style.css                 ← All styles (tokens, layout, components)
+│   └── construction.css          ← Under-construction page styles
+├── js/
+│   ├── config.js                 ← Site-wide content config (edit this first)
+│   ├── auth.js                   ← Password gate (session-based)
+│   └── main.js                   ← Menu, page-top collapse, scramble, skill bars
+├── pages/
+│   ├── about.html
+│   ├── resume.html
+│   ├── projects.html
+│   ├── interests.html
+│   ├── contact.html
+│   ├── construction.html
+│   └── projects/                 ← Individual project detail pages
+│       ├── ...
+│   └── img/
+│       └── projects/             ← Project screenshot images
+└── pages/templates/
+    └── project.html              ← Template for new project detail pages
 ```
 
 ---
 
 ## Common Edits
 
-### Change a color
-Open `css/tokens.css`. Every color is a CSS variable at the top. Changing
-`--burn` will update every element that uses the orange accent sitewide.
+### Update name, role, location, bio, or stats
+Open `js/config.js`. All site-wide content is defined in the `SITE_CONFIG` object —
+name, role, years of experience, cloud platform, availability status, hero tagline,
+bio, and the data feed labels on the home page.
 
-### Update your name / headline
-Open `index.html`, find the `<!-- EDIT: hero copy -->` comment in `#page-home`.
+### Change a color or font
+Open `css/style.css`. Design tokens are at the very top under `:root` —
+`--burn`, `--teal`, `--void`, font families, nav height, etc.
 
-### Update menu sidebar stats
-Find `<!-- EDIT: menu sidebar stats -->` comment in the menu overlay section.
+### Add a project detail page
+1. Copy `pages/templates/project.html` to `pages/projects/NN-project-name.html`
+2. Fill in the content
+3. Add a project card linking to it in `pages/projects.html`
+4. Drop any screenshot into `assets/img/projects/`
 
-### Update kill feed labels (top-left on home)
-Find `<!-- EDIT: kill feed labels -->` in `#page-home`.
+### Change the password
+`js/auth.js` contains a SHA-256 hash of the password in the `HASH` constant.
+Generate a new hash and replace it. The gate is session-based — authenticated
+users stay unlocked until the browser tab closes.
 
-### Add a new page
-1. Add a `<section id="page-{name}" hidden>` in `index.html`
-2. Add a menu link `<li><a onclick="goTo('{name}')">...</a></li>`
-3. Add `'{name}'` to the `PAGES` array in `js/main.js`
-4. Create `css/{name}.css` and link it in `<head>`
+---
+
+## Design Tokens (css/style.css `:root`)
+
+| Token | Value | Use |
+|---|---|---|
+| `--burn` | `#E84B1A` | Primary accent (orange) |
+| `--teal` | `#00C4B4` | Secondary accent |
+| `--void` | `#050505` | Page background |
+| `--txt` | `#EDE7DB` | Body text |
+| `--font-display` | DM Sans | Headings |
+| `--font-mono` | Share Tech Mono | HUD labels, readouts |
 
 ---
 
 ## Deploy to GitHub Pages
 
 1. Create a repo named `yourusername.github.io`
-2. Push this entire `portfolio/` folder contents to the repo root
-3. Go to Settings → Pages → Source: `main` branch, `/ (root)`
-4. Live at `https://yourusername.github.io` within ~60s
+2. Push the repo contents to the `main` branch root
+3. Go to **Settings → Pages → Source**: `main` branch, `/ (root)`
+4. Live at `https://yourusername.github.io` within ~60 seconds
 
 ### Contact form
-The form needs a backend to actually send email. Easiest option for a static
-site: [Formspree](https://formspree.io). Add your form key to the `<form>`
-action attribute when building the Contact page.
-
----
-
-## Fonts
-Loaded from Google Fonts:
-- **Barlow Condensed** — display / headings (weights 300–900, italic variants)
-- **Share Tech Mono** — HUD labels, monospace readouts
-- **Barlow** — body copy (weights 300, 400)
+The contact form requires a backend to send email. For a static site use
+[Formspree](https://formspree.io) — add your form key to the `<form>` action
+attribute in `pages/contact.html`.

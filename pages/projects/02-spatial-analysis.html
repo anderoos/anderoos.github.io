@@ -342,16 +342,16 @@
   <!-- POST HERO -->
   <header class="post-hero">
     <a class="post-back" href="../projects.html">Back to Projects</a>
-    <div class="post-id">OP-002 // [ANALYTICS]</div>
-    <h1 class="post-title">[SPATIAL ANALYSIS OF NYC BAKERIES]</h1>
+    <div class="post-id">OP-002 // ANALYTICS</div>
+    <h1 class="post-title">Spatial Analysis of NYC Bakeries</h1>
     <div class="post-meta">
       <span class="post-status live">LIVE</span>
       <span class="post-date">2024.02</span>
     </div>
     <div class="tags" style="margin-top: 16px;">
-      <span class="tag">[ANALYTICS]</span>
-      <span class="tag">[DATA VIS]</span>
-      <span class="tag">[STATISTICS]</span>
+      <span class="tag">Analytics</span>
+      <span class="tag">Data Visualization</span>
+      <span class="tag">Statistics</span>
     </div>
   </header>
 
@@ -392,10 +392,10 @@
       <div class="post-section-label">Solution</div>
       <h2 class="post-h2">How it was built</h2>
       <p class="post-p">
-        Information of NYC's businesses were aggregated from Yelp's API using key words associated with desserts (ie bake, cake, desserts, donut, bakery, patisserie, viennoiserie, etc.). ETL principles were used to clean and tidy the dataset to improve integrity and usability. Discrete values were scaled for normality. Keywords, and symbols were binary encoded to simplify the analyses. KNN Imputation was also performed to impute missing information.
+        Business data was aggregated from Yelp's API using keywords associated with desserts (e.g. bake, cake, desserts, donut, bakery, patisserie, viennoiserie). ETL principles were applied to clean the dataset and improve integrity. Discrete values were scaled for normality, keywords and symbols were binary encoded, and KNN imputation was used to fill missing information.
       </p>
       <p class="post-p">
-        A exploratory and statistical analysis was performed to observe the distribution of specialty shops across the five boroughs. Using the mean review_count and ratings as a metric for success, ANOVA and Tukey's Range test was performed to observe the mean differences between each business cohort. Other features like business 'phone' was also analyzed to determine if displaying a business number improves. ANOVA/ Tukey's Range test was also performed between the business's price points and rating/ review metrics.
+        An exploratory and statistical analysis examined the distribution of specialty shops across the five boroughs. Using mean review count and ratings as a success proxy, ANOVA and Tukey's Range tests measured mean differences between business cohorts. The presence of a listed phone number was also analyzed as a potential signal of engagement. ANOVA and Tukey's Range tests were additionally applied across price points against rating and review metrics.
       </p>
       <p class="post-p">
         The 'success' metric was calculated by finding the normalized 50th percentile of review_counts and ratings. Businesses exceeding both were given the feature 'is_successful'. Chi2 was then performed to observe the likelihood of success of each business category.
@@ -404,7 +404,7 @@
         Finally, using the unsupervised learning method DBSCAN, a geospatial clustering analysis was performed to observe which areas had the most successful businesses.
       </p>
       <p class="post-p">
-        In the information era, trends and fads move fast. This analysis cannot account for social media presence and the effect of influencers on the success of businesses. This analysis also is limited to population density and demographic of local neighborhoods. Additionally, yelp does not provide the age of the business, which would be a true testament for the success of the business.​​​​​​​
+        Limitations: this analysis cannot account for social media presence or the influence of viral trends on business success. It is also constrained by available data — population density and neighborhood demographics are not captured, and Yelp does not provide business age, which would be a stronger indicator of long-term viability.
       </p>
     </div>
 
@@ -441,10 +441,10 @@
         Comparative analysis between dessert and bakery categories and cafes reveals interesting dynamics. Dessert and bakery have a low mean difference in ratings, indicating a narrower range in customer satisfaction, but typically score lower than cafes. Coffee shops in particular stand out with the highest review counts, suggesting that they are more favorable of this cohort.
       </p>
       <p class="post-p">
-        When investigating price sensitivity among customers showed more nuanced behavior. Businesses at premium price points (four dollar signs) face more scrutiny, as shown by the large spread in mean differences, indicating more varied customer perceptions, however averages highest of all four price points. Mid-tiered businesses (three dollar sign) encounters critical reviews but not to the degree of four-dollar-sign establishments. When compared to two and one dollar sign businesses, the spread in ratings indicates that these businesses draw less scrutiny when compared to their three dollar and four dollar counterparts. There were significant differences in review_counts between four and three dollar sign businesses versus one and two dollar sign businesses, which merits further investigation. Despite one and two dollar sign businesses drawing less scrutiny, they typically see less foot traffic when compared to the three and four dollar price point business counterparts.
+        Price sensitivity analysis revealed nuanced customer behavior. Premium establishments ($$$$) face the most scrutiny — shown by the large spread in mean differences — yet average the highest ratings across all four price tiers. Mid-range businesses ($$$) attract critical reviews, though not to the same degree. Budget-tier businesses ($ and $$) draw less scrutiny but also see lower foot traffic compared to their higher-priced counterparts. Significant differences in review counts between the $$$–$$$$ tier and the $–$$ tier merit further investigation.
       </p>
       <p class="post-p">
-        Diving deep[er into the success metrics with Chi-square analysis revealed insightful revelations. By comparing expected and actual results, this analysis yielded a Chi2 value of 84.46 with a p-value of 0.05, indicating a statistically significant difference between business categories. Contrary to what we have seen so far, bakeries were found to be less likely to achieve 'success' compared to random chance, indicated by its magnitude and direction in the 0 column. Conversely, ice cream shops, cafes and chocolate shops emerged as categories with a high chance of success.
+        Diving deeper into the success metrics, Chi-square analysis revealed meaningful distinctions. By comparing expected and actual results, this analysis yielded a Chi2 value of 84.46 with a p-value of 0.05, indicating a statistically significant difference between business categories. Contrary to what we have seen so far, bakeries were found to be less likely to achieve 'success' compared to random chance, indicated by its magnitude and direction in the 0 column. Conversely, ice cream shops, cafes and chocolate shops emerged as categories with a high chance of success.
       </p>
       <p class="post-p">
         DBSCAN spatial cluster analysis was then performed to cluster businesses that were labeled as 'successful'. Given the geographic sparsity of businesses in Queens and Brooklyn when compared to Manhattan, cluster distances were modified for each borough. Within the dessert sector, we see that the UES, Midtown and Tribeca has the highest density of 'successful' businesses. In Queens, clusters are more diffuse, particularly in Eastern Queens. LIC, Sunnyside, Astoria, Woodside show strong clustering, while Ridgewood, Forest Hills, Jamaica, Flushing and Bayside are more sparse. In Brooklyn, western Brooklyn seems to see more successful businesses, particularly in areas of Bushwick, Williamsburg, Redhook, and Fort Hamilton.
@@ -510,13 +510,13 @@
       <!-- Remove whichever direction doesn't apply -->
       <a class="post-nav-link prev" href="01-codecademy-project.html">
         <span class="pn-dir">← Previous</span>
-        <span class="pn-title">[CODEECADEMY PROJECTS]</span>
+        <span class="pn-title">Codecademy Learning Challenges</span>
         <span class="pn-id">OP-001</span>
       </a>
-      <a class="post-nav-link next" href="../construction.html">
+      <a class="post-nav-link next" href="03-citibikes.html">
         <span class="pn-dir">Next →</span>
-        <span class="pn-title">[Next Project Name]</span>
-        <span class="pn-id">OP-00n</span>
+        <span class="pn-title">Visualizing Citibikes</span>
+        <span class="pn-id">OP-003</span>
       </a>
     </nav>
 
