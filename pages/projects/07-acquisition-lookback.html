@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — Acquisition Lookback</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/project.css" />
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> ACQUISITION LOOKBACK</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> SQL · PYTHON · ANALYTICS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> ACQUISITION LOOKBACK</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> SQL · PYTHON · ANALYTICS</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping"><div class="ping-dot"></div></div>
+      <button id="hbtn" aria-label="Toggle navigation"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-007 // ANALYTICS</div>
+    <h1 class="post-title">Acquisition Lookback</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2025</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">SQL</span>
+      <span class="tag">Python</span>
+      <span class="tag">Cohort Analysis</span>
+      <span class="tag">Analytics</span>
+    </div>
+  </header>
+
+  <main class="post-content">
+
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        A retrospective analysis of customer acquisition channels examining cohort retention, cost-per-acquisition by source, and lifetime value projections. The goal was to surface which channels drove durable, long-term growth versus short-term volume spikes — and to inform future channel budget allocation.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Problem</div>
+      <h2 class="post-h2">What Needed Solving</h2>
+      <p class="post-p">
+        Acquisition spend was being evaluated primarily on volume metrics — signups, installs, first-session counts. This created a blind spot: channels that drove high initial volume but poor retention were being over-funded, while channels that acquired fewer but stickier users were underweighted.
+      </p>
+      <ul class="post-list">
+        <li>No cohort-level view of retention by acquisition channel.</li>
+        <li>CAC calculations didn't account for downstream churn differences.</li>
+        <li>LTV estimates were global averages, not segmented by source.</li>
+      </ul>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Solution</div>
+      <h2 class="post-h2">How It Was Built</h2>
+      <p class="post-p">
+        Users were grouped into monthly acquisition cohorts and tagged with their first-touch channel. Retention curves were built for each cohort × channel combination, tracking activity at 7-, 30-, 60-, and 90-day marks. CAC was recomputed as channel spend divided by retained users at 30 days — a more meaningful denominator than raw signups.
+      </p>
+      <p class="post-p">
+        LTV projections were modeled by fitting a retention curve per channel and integrating expected revenue over a 12-month horizon. Results were packaged into a summary report comparing channels on adjusted CAC, 90-day retention rate, and projected 12-month LTV.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Outcomes</div>
+      <h2 class="post-h2">Results</h2>
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <div class="outcome-val teal">COHORT</div>
+          <div class="outcome-key">Retention by Channel</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val">LTV</div>
+          <div class="outcome-key">12-Month Projections</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val burn">CAC</div>
+          <div class="outcome-key">Adjusted for Retention</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="06-ab-testing.html">
+        <span class="pn-dir">← Previous</span>
+        <span class="pn-title">A/B Testing — MSU Library</span>
+        <span class="pn-id">OP-006</span>
+      </a>
+      <a class="post-nav-link next" href="08-asset-check-sensors.html">
+        <span class="pn-dir">Next →</span>
+        <span class="pn-title">Asset Check Sensors</span>
+        <span class="pn-id">OP-008</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

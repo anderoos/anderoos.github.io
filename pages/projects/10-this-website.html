@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — This Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/project.css" />
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> THIS WEBSITE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> HTML · CSS · JAVASCRIPT</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> THIS WEBSITE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> HTML · CSS · JAVASCRIPT</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping"><div class="ping-dot"></div></div>
+      <button id="hbtn" aria-label="Toggle navigation"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-010 // WEB DEV</div>
+    <h1 class="post-title">This Website</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2026.04</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Design</span>
+    </div>
+  </header>
+
+  <main class="post-content">
+
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        A personal portfolio built from scratch — no frameworks, no build tools, no dependencies. The design language draws from NASA technical documentation and early 2000s punk zine aesthetics: monospace HUD overlays, scanline effects, tactical corner brackets, and a dark void palette. The site is entirely static HTML, CSS, and vanilla JavaScript.
+      </p>
+      <div class="post-callout">
+        <a href="https://github.com/anderoos/portfolio" target="_blank">
+          <p>/// Github Repository — Portfolio</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Design</div>
+      <h2 class="post-h2">Design Language</h2>
+      <p class="post-p">
+        The aesthetic is inspired by Dieter Rams' ten principles of good design — particularly "as little design as possible" — reinterpreted through a NASA mission control lens. Every visual element serves a purpose: HUD brackets mark the viewport, the ticker communicates metadata, and the page-top hero doubles as an information radiator.
+      </p>
+      <p class="post-p">
+        Typography is handled by two families: DM Sans for display and body copy (clean, humanist, legible at small sizes), and Share Tech Mono for all HUD labels, codes, and data readouts. Color palette is deliberately minimal — a near-black void, teal as the primary accent, and a burnt orange for warnings and highlights.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Engineering</div>
+      <h2 class="post-h2">How It's Built</h2>
+      <p class="post-p">
+        All site-wide content (name, role, status, ping label) is driven by a single <code>js/config.js</code> file via a <code>SITE_CONFIG</code> object — a single source of truth for anything that needs to change across pages.
+      </p>
+      <ul class="post-list">
+        <li>Auth gate: SHA-256 hash stored in sessionStorage — no backend required.</li>
+        <li>Text scramble: letter-by-letter character cycling on the nav logo, resolving to the target string.</li>
+        <li>Page wipe: full-viewport overlay animates in/out on navigation to smooth page transitions.</li>
+        <li>Skill bars: animate on scroll via IntersectionObserver, filling to a data-attribute target width.</li>
+        <li>Bottom ticker: CSS marquee using <code>@keyframes scroll</code> on a duplicated track for seamless looping.</li>
+      </ul>
+
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <div class="outcome-val teal">0</div>
+          <div class="outcome-key">Frameworks</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val">0</div>
+          <div class="outcome-key">Build Steps</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val burn">LIVE</div>
+          <div class="outcome-key">Deployment Status</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="09-midlevel-dashboards.html">
+        <span class="pn-dir">← Previous</span>
+        <span class="pn-title">Midlevel Dashboards</span>
+        <span class="pn-id">OP-009</span>
+      </a>
+      <div class="post-nav-empty"></div>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — Asset Check Sensors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/project.css" />
+</head>
+<body>
+
+  <div class="edge-top"></div>
+
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> ASSET CHECK SENSORS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> PYTHON · DBT · SQL</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">PROJECT</span> ASSET CHECK SENSORS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STATUS</span> LIVE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">STACK</span> PYTHON · DBT · SQL</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="../../index.html">
+      ANDY
+      <span class="nav-badge">ONLINE</span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping"><div class="ping-dot"></div></div>
+      <button id="hbtn" aria-label="Toggle navigation"><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="../about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="../resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="../projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="../interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="../contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v">New York City</div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v">Data Engineer</div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online">● ACTIVE, LOOKING</div></div>
+    </div>
+  </div>
+
+  <header class="post-hero">
+    <a class="post-back" href="../projects.html">Back to Projects</a>
+    <div class="post-id">OP-008 // DATA ENGINEERING</div>
+    <h1 class="post-title">Asset Check Sensors</h1>
+    <div class="post-meta">
+      <span class="post-status live">LIVE</span>
+      <span class="post-date">2025</span>
+    </div>
+    <div class="tags" style="margin-top: 16px;">
+      <span class="tag">Python</span>
+      <span class="tag">dbt</span>
+      <span class="tag">Data Quality</span>
+      <span class="tag">Monitoring</span>
+    </div>
+  </header>
+
+  <main class="post-content">
+
+    <div class="post-section">
+      <div class="post-section-label">Overview</div>
+      <p class="post-p">
+        Automated data quality sensors that validate asset health across pipeline stages. The system flags schema drift, null rate violations, and freshness failures before they reach downstream consumers — replacing manual spot-checks with a continuous, automated monitoring layer.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Problem</div>
+      <h2 class="post-h2">What Needed Solving</h2>
+      <p class="post-p">
+        Data quality issues were being caught late — either by downstream analysts or by end users. There was no systematic layer that validated asset health after each pipeline run. Schema changes upstream would silently break models, and null rates could spike for days before anyone noticed.
+      </p>
+      <ul class="post-list">
+        <li>Schema drift goes undetected until downstream models fail.</li>
+        <li>No automated freshness checks on time-sensitive tables.</li>
+        <li>Null rate spikes surface only through user complaints.</li>
+      </ul>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Solution</div>
+      <h2 class="post-h2">How It Was Built</h2>
+      <p class="post-p">
+        Sensors were implemented as a lightweight validation layer that runs post-pipeline on each asset. Each sensor type targets a specific failure mode: schema sensors diff column signatures against a registered baseline, freshness sensors compare the latest record timestamp against an expected cadence, and null sensors measure column-level null rates against configurable thresholds.
+      </p>
+      <p class="post-p">
+        Failures surface as structured alerts with asset name, sensor type, expected vs. observed values, and severity — giving on-call engineers enough context to triage without digging into logs.
+      </p>
+    </div>
+
+    <div class="post-rule"></div>
+
+    <div class="post-section">
+      <div class="post-section-label">Outcomes</div>
+      <h2 class="post-h2">Results</h2>
+      <div class="post-outcomes">
+        <div class="outcome-cell">
+          <div class="outcome-val teal">3</div>
+          <div class="outcome-key">Sensor Types</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val">EARLY</div>
+          <div class="outcome-key">Issue Detection</div>
+        </div>
+        <div class="outcome-cell">
+          <div class="outcome-val burn">AUTO</div>
+          <div class="outcome-key">Continuous Monitoring</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="07-acquisition-lookback.html">
+        <span class="pn-dir">← Previous</span>
+        <span class="pn-title">Acquisition Lookback</span>
+        <span class="pn-id">OP-007</span>
+      </a>
+      <a class="post-nav-link next" href="09-midlevel-dashboards.html">
+        <span class="pn-dir">Next →</span>
+        <span class="pn-title">Midlevel Dashboards</span>
+        <span class="pn-id">OP-009</span>
+      </a>
+    </nav>
+
+  </main>
+
+  <script src="../../js/config.js"></script>
+  <script src="../../js/main.js"></script>
+</body>
+</html>
