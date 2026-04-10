@@ -13,6 +13,7 @@ portfolio/
 ├── robots.txt
 ├── css/
 │   ├── style.css                 ← All styles (tokens, layout, components)
+│   ├── project.css               ← Project detail page styles (pages/projects/*)
 │   └── construction.css          ← Under-construction page styles
 ├── js/
 │   ├── config.js                 ← Site-wide content config (edit this first)
