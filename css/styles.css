@@ -92,9 +92,9 @@ body::after {
 }
 
 #home     { --glow: var(--burn); }
-#about    { --glow: var(--teal); }
+#about    { --glow: var(--teal); justify-content: flex-start; }
 #projects { --glow: var(--burn); justify-content: flex-start; }
-#contact  { --glow: var(--teal); }
+#contact  { --glow: var(--teal); justify-content: flex-start; }
 
 /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
 h2 {
@@ -281,6 +281,48 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
   color: var(--teal);
   line-height: 1.7;
 }
+/* ── STACK TICKER ───────────────────────────────────────────────── */
+.ticker-wrap {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+.ticker-item {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.ticker-item:hover { color: var(--teal); }
+
+.ticker-sep {
+  font-size: 8px;
+  color: rgba(232, 75, 26, 0.5);
+  flex-shrink: 0;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* ── Other Elemennts ─────────────────────────────────────────────── */
 
 .pt-eyebrow {
@@ -377,7 +419,6 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
 }
 
 .project-card.hidden { display: none; }
-.projects-grid .project-card:nth-child(n+9) { display: none; }
 
 /* Project card */
 .project-card {
@@ -613,6 +654,7 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
   .nav-inner { width: 60%; }
   .vdate-strip { display: none; }
   .bs-deploy { display: none; }
+  .bs-text { display: none; }
 
   #projects { padding: 48px 1rem 32px; }
   .proj-tree { display: none; }
@@ -639,7 +681,5 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
 
   .contact-split { flex-direction: column; }
   .contact-img { display: none; }
-  .bs-text { font-size: 8px; }
-  .vdate-strip { font-size: 8px; }
 }
 
