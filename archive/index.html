@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Andy Cheng — Data Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- PERSISTENT HUD CHROME -->
+  <div class="edge-top"></div>
+
+  <!--  HUD Brackets-->
+  <div class="hud hud-tl">
+    <svg width="30" height="30" viewBox="0 0 20 20" fill="none">
+      <path d="M0 20 L0 0 L20 0" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-tr">
+    <svg width="30" height="30" viewBox="0 0 20 20" fill="none">
+      <path d="M20 20 L20 0 L0 0" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="20" cy="0" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-bl">
+    <svg width="30" height="30" viewBox="0 0 20 20" fill="none">
+      <path d="M0 0 L0 20 L20 20" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="0" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+  <div class="hud hud-br">
+    <svg width="30" height="30" viewBox="0 0 20 20" fill="none">
+      <path d="M20 0 L20 20 L0 20" stroke="#00C4B4" stroke-width="1.5"/>
+      <circle cx="20" cy="20" r="2" fill="#00C4B4" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <!-- BOTTOM BANNER -->
+  <div class="bottom-banner">
+    <div class="bb-track">
+      <span class="bb-sep">·</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY </span>DIETER RAMS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH </span>CLAUDE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEPLOYMENT DATE </span> 2026.04.03</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY </span>DIETER RAMS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH </span>CLAUDE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DESIGN LANGUAGE</span> NASA PUNK</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">SKETCH</span> CREATE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">BREAK</span> DISRUPT</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY </span>DIETER RAMS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH </span>CLAUDE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEPLOYMENT DATE </span> 2026.04.03</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">INSPIRED BY </span>DIETER RAMS</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DEVELOPED WITH </span>CLAUDE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">DESIGN LANGUAGE</span> NASA PUNK</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">SKETCH</span> CREATE</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">BREAK</span> DISRUPT</span>
+      <span class="bb-sep">·</span>
+      <span class="bb-item"><span class="bb-label">WHY ARE YOU STILL READING THIS</span> ... WEIRDO</span>
+      <span class="bb-sep">·</span>
+    </div>
+  </div>
+
+  <!--  LOAD IN  -->
+  <div class="page-wipe" id="page-wipe"></div>
+
+  <!-- NAV -->
+  <nav id="topnav" class="anim-fade-down anim-d0">
+    <a class="nav-logo" href="index.html">
+      ANDY.
+      <span class="nav-badge" id="cfg-nav-badge"></span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-ping">
+        <div class="ping-dot"></div>
+        <span id="cfg-ping"></span>
+      </div>
+      <button id="hbtn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MENU -->
+  <div id="menu-overlay">
+    <div class="menu-left">
+      <p class="menu-tag">// SELECT</p>
+      <ul class="menu-links">
+        <li><a href="pages/about.html"><span class="menu-num">01 —</span>About<span class="menu-arrow">›</span></a></li>
+        <li><a href="pages/resume.html"><span class="menu-num">02 —</span>Resume<span class="menu-arrow">›</span></a></li>
+        <li><a href="pages/projects.html"><span class="menu-num">03 —</span>Projects<span class="menu-arrow">›</span></a></li>
+        <li><a href="pages/interests.html"><span class="menu-num">04 —</span>Interests<span class="menu-arrow">›</span></a></li>
+        <li><a href="pages/contact.html"><span class="menu-num">05 —</span>Contact<span class="menu-arrow">›</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-right">
+      <div><div class="menu-stat-k">LOCATION</div><div class="menu-stat-v" id="cfg-location"></div></div>
+      <div><div class="menu-stat-k">ROLE</div><div class="menu-stat-v" id="cfg-role"></div></div>
+      <div><div class="menu-stat-k">STATUS</div><div class="menu-stat-v online" id="cfg-status"></div></div>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <section id="page-home">
+    <div class="home-panel-r"></div>
+    <div class="home-panel-r2"></div>
+
+    <!-- LEFT KILLFEED READOUT -->
+    <div class="kill-feed anim-fade-down anim-d2" id="cfg-kill-feed">
+      <div class="kf-row"><span class="kf-key"></span></div>
+      <div class="kf-row alt"><span class="kf-key"></span></div>
+      <div class="kf-row"><span class="kf-key"></span></div>
+    </div>
+
+    <!-- RIGHT KILLFEED READOUT -->
+    <div class="home-readout anim-fade-down anim-d2">
+      <div class="readout-line" data-scramble>LAT: 40.7128° N</div>
+      <div class="readout-line" data-scramble>LNG: 74.0060° W</div>
+      <div class="readout-line burn" id="cfg-readout-status"></div>
+      <div class="readout-line" id="cfg-readout-role"></div>
+    </div>
+
+    <!-- Vertical date strip — date injected by JS -->
+    <div class="vdate-strip anim-fade-down anim-d3">
+      <div class="vdate-line"></div>
+      <div class="vdate-dot teal"></div>
+      <div class="vdate-text" id="live-date">----/--/--</div>
+      <div class="vdate-dot"></div>
+      <div class="vdate-text">04 <span class="vd-star">✦</span></div>
+      <div class="vdate-dot"></div>
+      <div class="vdate-text">+ &nbsp; 14 <span class="vd-star">✦</span></div>
+    </div>
+
+    <div class="home-vline-r anim-fade-in anim-d3"></div>
+
+    <!-- START / CODE / LOCK STRIP -->
+    <div class="hud-code-strip anim-fade-in anim-d4" aria-hidden="true">
+      <span class="hcs-slash">//</span>
+      <span class="hcs-text">START ──── CODE · 13 · V · 2 · 44 ──── LOCK ▼</span>
+      <span class="hcs-slash">//</span>
+    </div>
+
+    <!-- EDIT: hero copy -->
+    <div class="home-copy">
+      <div class="home-eyebrow anim-fade-down anim-d3" id="cfg-eyebrow"></div>
+      <div class="home-name anim-fade-down anim-d4">
+        ANDY
+        <span class="name-accent">CHENG</span>
+      </div><br>
+      <div class="home-rule anim-fade-down anim-d5">
+        <div class="hr-burn"></div>
+        <span class="hr-label" id="cfg-tagline">ARCHITECTURE · DESIGN · GOVERNANCE</span>
+      </div>
+      <p class="home-sub anim-fade-down anim-d6" id="cfg-bio">
+        Reliable and consistent automation pipelines.
+        Governance for organizations where data quality isn't optional.
+      </p>
+    </div>
+
+    <!-- EDIT: sidebar stats -->
+    <div class="home-stats">
+      <div class="home-stat anim-fade-down anim-d4">
+        <div class="stat-val" id="cfg-years-exp"></div>
+        <div class="stat-key">YRS EXPERIENCE</div>
+      </div>
+      <div class="home-stat anim-fade-down anim-d5">
+        <div class="stat-val" id="cfg-cloud"></div>
+        <div class="stat-key">PRIMARY CLOUD PLATFORM</div>
+      </div>
+      <div class="home-stat anim-fade-down anim-d6">
+        <div class="stat-val teal" id="cfg-availability"> </div>
+        <div class="stat-key" id="cfg-availability_l2"> </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
