@@ -1,5 +1,6 @@
 # Andy Cheng — Portfolio
 
+# TODO UPDATE TO v2
 Tactical HUD-style personal portfolio. NASA-punk / dark terminal aesthetic.
 Dark theme — burn orange `#E84B1A`, teal `#00C4B4`, void black `#050505`.
 

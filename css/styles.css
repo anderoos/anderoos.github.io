@@ -63,6 +63,7 @@ body::after {
   height: 100vh;
   width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -72,7 +73,7 @@ body::after {
   overflow: hidden;
   transform: translateZ(0);
   backface-visibility: hidden;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 /* Radial grid overlay, colour set per-section via --glow */
@@ -376,6 +377,7 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
 }
 
 .project-card.hidden { display: none; }
+.projects-grid .project-card:nth-child(n+9) { display: none; }
 
 /* Project card */
 .project-card {
@@ -637,4 +639,7 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
 
   .contact-split { flex-direction: column; }
   .contact-img { display: none; }
+  .bs-text { font-size: 8px; }
+  .vdate-strip { font-size: 8px; }
 }
+
