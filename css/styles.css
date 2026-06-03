@@ -664,6 +664,7 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
     background: var(--bg-0);
     gap: 0;
   }
+  .tags { display: none; }
   .project-card {
     padding: 12px 0;
     background: var(--bg-0);
@@ -681,5 +682,15 @@ nav.top a:hover, nav.top a.active { color: var(--teal); }
 
   .contact-split { flex-direction: column; }
   .contact-img { display: none; }
+
+  .ticker-wrap {
+    bottom: 40px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .ticker-item {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
 }
 
